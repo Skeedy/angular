@@ -1,6 +1,5 @@
 mat-sidenav {
   width: 35%;
-  background-color: rgba(0, 0, 0, .25);
  }
 
 .remaining-space {
@@ -19,4 +18,3 @@ mat-sidenav {
   overflow: auto;
   border: 1px solid #555;
 }
-
