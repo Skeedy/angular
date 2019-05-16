@@ -1,20 +1,46 @@
 mat-sidenav {
   width: 35%;
+  background-color: rgb(243, 117, 108);
  }
 
 .remaining-space {
   flex: 1 1 auto;
 }
 .example-container {
+  display: flex;
+  flex-direction: column;
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
 }
+
+.example-container > * {
+  width: 100%;
+}
+
+.example-container form {
+  margin-bottom: 20px;
+}
+
+.example-container form > * {
+  margin: 5px 0;
+}
+
+.example-container .mat-radio-button {
+  margin: 0 12px;
+}
+
 .example-events {
   width: 300px;
   height: 200px;
   overflow: auto;
   border: 1px solid #555;
+}
+
+nav mat-nav-list a.active {
+  color: white;
+  font-weight: bold;
+  background: rgb(145, 38, 38);
 }

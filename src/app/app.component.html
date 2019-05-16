@@ -10,6 +10,18 @@
           <span class="remaining-space"></span>
           <span class="mr-5">Paramètres</span>
         </mat-toolbar>
+        <nav>
+          <mat-nav-list>
+            <a [routerLink]="['/product']" routerLinkActive="active" mat-list-item (click)="sidenav.close()">
+              <mat-icon matListIcon>fastfood</mat-icon>
+              <span>Produits</span>
+            </a>
+            <a [routerLink]="['/menu']" routerLinkActive="active" mat-list-item (click)="sidenav.close()">
+              <mat-icon matListIcon>View_module</mat-icon>
+              <span>Menu</span>
+            </a>
+          </mat-nav-list>
+        </nav>
   </mat-sidenav>
 
   <mat-sidenav-content>
@@ -25,7 +37,7 @@
     </mat-toolbar>
 
     <div class="container-fluid">
-      
+      <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

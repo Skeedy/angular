@@ -1,15 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TitleService } from './service/title.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'Angular';
-  events: string[] = [];
-  opened: boolean;
 
-  //shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
-  shouldRun = true;
+export class AppComponent implements OnInit {
+  title = 'Angular';
+  opened: boolean;
+  constructor(private titleService: TitleService) {}
+  ngOnInit(): void {
+    this.titleService.init();
+  }
 }
+
