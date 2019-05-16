@@ -33,7 +33,17 @@
         </button>
       </span>
       <span class="remaining-space"></span>
-      <span class="mr-5">Boutique</span>
+      <span class="mr-5">
+        <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon class="material-icons-outlined">account_box</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item routerLink="/login" routerLinkActive="active">
+            <mat-icon class="material-icons-outlined">account_box</mat-icon>
+            <span>Se Connecter</span>
+          </button>
+        </mat-menu>
+      </span>
     </mat-toolbar>
 
     <div class="container-fluid">
