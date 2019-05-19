@@ -2,11 +2,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatRadioModule } from '@angular/material/radio';
-import {MatSelectModule} from '@angular/material/select';
-import {RouterModule, Routes } from '@angular/router';
-import {JwtInterceptor } from './class/jwt-interceptor';
-import {ErrorInterceptor } from './class/error-interceptor';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { RouterModule, Routes } from '@angular/router';
+import { JwtInterceptor } from './class/jwt-interceptor';
+import { ErrorInterceptor } from './class/error-interceptor';
 
 
 import { AppComponent } from './app.component';

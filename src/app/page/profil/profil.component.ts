@@ -18,5 +18,8 @@ export class ProfilComponent implements OnInit {
 
   ngOnInit(): void {
     this.titleService.init();
+    if (this.auth.currentUser) {
+      this.user = this.auth.currentUser;
+    }
   }
 }

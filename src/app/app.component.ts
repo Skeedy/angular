@@ -1,6 +1,4 @@
 import { User } from './class/user';
-import { Login } from './class/login';
-import { LoginComponent } from './page/login/login.component';
 import { AuthService } from './service/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { TitleService } from './service/title.service';
