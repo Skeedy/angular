@@ -12,6 +12,10 @@
         </mat-toolbar>
         <nav>
           <mat-nav-list>
+            <a *ngIf="isConnected()" [routerLink]="['/menu']" routerLinkActive="active" mat-list-item (click)="sidenav.close()">
+              <mat-icon matListIcon>face</mat-icon>
+              <span>Profil</span>
+            </a>
             <a [routerLink]="['/product']" routerLinkActive="active" mat-list-item (click)="sidenav.close()">
               <mat-icon matListIcon>fastfood</mat-icon>
               <span>Produits</span>
@@ -33,7 +37,7 @@
         </button>
       </span>
       <span class="remaining-space"></span>
-      <span class="mr-5">
+      <span *ngIf="!isConnected()">
         <button mat-button [matMenuTriggerFor]="menu">
           <mat-icon class="material-icons-outlined">account_box</mat-icon>
         </button>
@@ -44,6 +48,25 @@
           </button>
         </mat-menu>
       </span>
+      <span *ngIf="isConnected()">
+        <span>{{ user.username }}</span>
+          <button mat-button [matMenuTriggerFor]="menu">
+            <mat-icon class="material-icons-outlined">account_box</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon class="material-icons-outlined">account_box</mat-icon>
+                <span>Profil</span>
+            </button>
+            <button mat-menu-item (click)="logout()">
+              <mat-icon class="material-icons-outlined">close</mat-icon>
+              <span>Se Déconnecter</span>
+            </button>
+          </mat-menu>
+        </span>
+        <span *ngIf="!isConnected()">
+          <span>Se connecter</span>
+        </span>
     </mat-toolbar>
 
     <div class="container-fluid">

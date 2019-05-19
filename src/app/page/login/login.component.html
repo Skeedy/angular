@@ -1,6 +1,9 @@
 <div class="container-fluid">
   <div fxLayout="row" fxLayoutAlign="center center" style="height: calc(100vh - 64px);">
     <mat-card class="col-6 col-sm-8 col-md-6 col-lg-4 text-center">
+      <ngb-alert type="danger" *ngIf="connexionFailed" (close)="connexionFailed = false">
+        MDP & IDENTIFIANT INVALID
+      </ngb-alert>
       <mat-card-title class="text-center">Se connecter</mat-card-title>
       <mat-card-content>
         <form class="form-content" [formGroup]="loginForm">

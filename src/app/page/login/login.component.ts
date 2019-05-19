@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from '../../service/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,7 +10,12 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  public connexionFailed = false;
+  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {
+    if (this.auth.isConnected()) {
+      this.router.navigate(['/product']);
+    }
+   }
 
   ngOnInit() {
     this.loginForm = this.fb.group( {
@@ -18,7 +25,26 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.connexionFailed = false;
     const val = this.loginForm.value;
-    console.log(val.username, val.password);
+    if(val.username && val.password) {
+      this.auth.login(val.username, val.password)
+      .subscribe(
+        () => {
+           this.auth.profile()
+            .subscribe(
+                (user) => {
+                  this.router.navigate(['/product']);
+                },
+                (err) => {
+                  console.log(err);
+                  this.connexionFailed = true;
+                });
+        },
+        (err) => {
+          console.log(err);
+          this.connexionFailed = true;
+      } );
+    }
   }
 }
