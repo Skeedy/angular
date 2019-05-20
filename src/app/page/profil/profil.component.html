@@ -1,0 +1,29 @@
+<div class="container-fluid d-flex flex-column justify-content-end align-items-center">
+  <div>
+    <h2 class="m-5">Bienvenue sur votre profil</h2>
+  </div>
+  <div class="cd col-md-3">
+    <mdb-card cascade="true">
+      <div class="view view-cascade overlay waves-light" mdbWavesEffect>
+        <img mat-card-sm-image style="width: 100%;" src="https://images-na.ssl-images-amazon.com/images/I/51lbzo8WeEL._SX425_.jpg" alt="sushis">
+        <a>
+          <div class="mask rgba-white-slight"></div>
+        </a>
+      </div>
+      <mdb-card-body cascade="true" class="text-center d-flex flex-column">
+        <h4 class="card-title">
+          <strong>{{ user.fname }} {{ user.lname }}</strong>
+        </h4>
+        <span class="m-1">
+            <mat-card-title>Téléphone: {{ user.phone }}</mat-card-title>
+        </span>
+        <span class="m-1">
+            <mat-card-title>Ville: {{ user.ville }}</mat-card-title>
+        </span>
+        <span class="m-1">
+            <mat-card-title>Ville: {{ user.email }}</mat-card-title>
+        </span>
+      </mdb-card-body>
+    </mdb-card>
+  </div>
+</div>

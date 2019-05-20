@@ -2,7 +2,6 @@ mat-sidenav {
   width: 35%;
   background-color: rgb(243, 117, 108);
  }
-
 .remaining-space {
   flex: 1 1 auto;
 }
@@ -43,4 +42,11 @@ nav mat-nav-list a.active {
   color: white;
   font-weight: bold;
   background: rgb(145, 38, 38);
+}
+
+footer {
+  display: flex;
+  flex-flow: column wrap;
+  position: relative;
+  bottom: 0;
 }
