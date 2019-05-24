@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {TitleService} from './service/title.service';
 import { AuthService} from './service/auth.service';
+import { MenuService} from './service/menu.service';
 import { Globals} from './globals';
 import { User } from './class/user';
 
