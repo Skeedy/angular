@@ -1,3 +1,29 @@
-<p>
- Produits
-</p>
+<header class="d-flex justify-content-center m-5">
+    <h2>Produits</h2>
+</header>
+<div class="d-flex justify-content-around align-items-center">
+    <div *ngFor="let assoc of assocs"
+         class="col-md-2">
+        <mat-card cascade="true">
+            <div class="view view-cascade overlay waves-light">
+                <img *ngIf="assoc?.image" src="{{ assoc?.image?.imgpath | imgurl }}" width="500" height="600">
+                <a>
+                    <div class="mask rgba-white-slight"></div>
+                </a>
+            </div>
+            <div
+                           class="text-center d-flex justify-content-center flex-column">
+                <h5>{{ assoc?.type?.name }}</h5>
+
+                    <div class="d-flex justify-content-center align-items-center product__infos"
+                         style="color: darkred;">{{ assoc?.type?.name }} {{ assoc?.product?.name }}</div>
+
+                <div class="d-flex justify-content-center">
+                    <button mat-raised-button>+</button>
+                    <span class="m-3">{{ assoc?.quantity }}</span>
+                    <button class="justify-content-around" mat-raised-button>-</button>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</div>

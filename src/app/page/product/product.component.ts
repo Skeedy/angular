@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Type } from '../../class/type';
-import {HttpClient} from '@angular/common/http';
 import {Globals} from '../../globals';
-import {TypeService} from '../../service/type.service';
+import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
+import {Assoc} from '../../class/assoc';
+import {AssocService} from '../../service/assoc.service';
 
 @Component({
   selector: 'app-product',
@@ -10,12 +11,19 @@ import {TypeService} from '../../service/type.service';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
+  uri = Globals.APP_API + 'assoc/';
+  assocs: Assoc[];
 
-  constructor(private type: TypeService) {
+  constructor(private assocService: AssocService, private router: Router, private http: HttpClient) { }
 
-  }
   ngOnInit() {
-
+    this.getAssocs();
   }
 
+  getAssocs() {
+    this.assocService.getAssocs()
+        .subscribe((data: Assoc[]) => {
+          this.assocs = data;
+        });
+  }
 }
