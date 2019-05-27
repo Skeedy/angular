@@ -6,7 +6,10 @@
          class="col-md-2">
         <mat-card cascade="true">
             <div class="view view-cascade overlay waves-light">
-                <img *ngIf="assoc?.image" src="{{ assoc?.image?.imgpath | imgurl }}" width="500" height="600">
+                <figure class="d-flex justify-content-center align-items-center">
+                    <img *ngIf="assoc?.image" src="{{ assoc?.image?.imgpath | imgurl }}" width="150"
+                         height="150">
+                </figure>
                 <a>
                     <div class="mask rgba-white-slight"></div>
                 </a>

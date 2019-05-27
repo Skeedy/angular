@@ -5,9 +5,10 @@ import {RouterModule, Routes } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material';
 import { MatIconModule, MatToolbarModule, MatSidenavModule, MatCheckboxModule,
      MatGridListModule, MatListModule, MatMenuModule,
-    MatCardModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+     MatCardModule, MatFormFieldModule, MatInputModule} from '@angular/material';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProductComponent } from './page/product/product.component';
@@ -15,6 +16,7 @@ import { MenuComponent } from './page/menu/menu.component';
 import { LoginComponent } from './page/login/login.component';
 import { JwtInterceptor} from './class/jwtinterceptor';
 import { ErrorInterceptor } from './class/errorinterceptor';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { IsSignedInGuard} from './guard/is-signed-in.guard';
 import { TypeComponent } from './page/type/type.component';
 import { TypeAddComponent } from './page/type/type-add/type-add.component';
@@ -42,6 +44,8 @@ const appRoutes: Routes = [
         ImgPipePipe,
     ],
     imports: [
+        MDBBootstrapModule,
+        MatButtonModule,
         HttpClientModule,
         MatInputModule,
         MatCardModule,
@@ -60,6 +64,7 @@ const appRoutes: Routes = [
         MatFormFieldModule,
         NgbModule,
         RouterModule.forRoot(appRoutes),
+        MDBBootstrapModule.forRoot()
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
