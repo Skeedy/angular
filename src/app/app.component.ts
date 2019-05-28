@@ -12,9 +12,16 @@ import { User } from './class/user';
 })
 export class AppComponent implements OnInit {
   title = 'Restaurant';
+  screenWidth: number;
   opened: boolean;
   user: User|null;
-  constructor(private titleService: TitleService, private auth: AuthService) {}
+  constructor(private titleService: TitleService,
+              private auth: AuthService) {
+    this.screenWidth = window.innerWidth;
+    window.onresize = () => {
+      this.screenWidth = window.innerWidth;
+    };
+  }
   ngOnInit(): void {
     this.titleService.init();
   }

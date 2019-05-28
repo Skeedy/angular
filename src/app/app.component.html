@@ -1,60 +1,61 @@
 <mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav mode="side" [(opened)]="opened">
-        <mat-toolbar color="warn">
-            <span>Menu</span>
-            <button mat-button (click)="sidenav.toggle()">
-                <mat-icon>clear</mat-icon>
-            </button>
-            <span class="remaining-space"></span>
-
-        </mat-toolbar>
+    <mat-sidenav #sidenav [opened]="screenWidth > 900" [mode]="(screenWidth > 900) ?
+    'side':'over'">
+        <figure class="d-flex justify-content-center m-3">
+            <img src="../assets/img/logo.jpg">
+        </figure>
+        <div class="ojbento" >
+            <span class="ojbento__adresse mb-1">3 rue du Général de Gaulle </span>
+            <span class="ojbento__adresse mb-1">33480 Castelnau de Médoc</span>
+            <div class="d-flex justify-content-center align-items-center">
+                <mat-icon class="phone-icon">phone_android</mat-icon>
+                <span class="ojbento__phone">05.56.69.92.42 </span>
+            </div>
+            <span class="mt-2" *ngIf="isConnected()">-Bonjour {{user?.username}}-</span>
+        </div>
         <nav>
             <mat-nav-list>
-                <a routerLink="/product" routerLinkActive="active" mat-list-item (click)="sidenav.close()">
-                    <mat-icon class="mr-3">fastfood</mat-icon>
-                    Produit</a>
-                <a routerLink="/menu" routerLinkActive="active" mat-list-item (click)="sidenav.close()">
-                    <mat-icon class="mr-3">view_list</mat-icon>
-                    Menu</a>
-                <a routerLink="/type" routerLinkActive="active" mat-list-item (click)="sidenav.close()">
-                    <mat-icon class="mr-3">assessment</mat-icon>
-                    Type</a>
+                <a routerLink="/product" routerLinkActive="active" mat-list-item>
+                    <span class="menu-text">Produit</span>
+                </a>
+                <a routerLink="/menu" routerLinkActive="active" mat-list-item>
+                    <span class="menu-text">Menu</span>
+                </a>
+                <a routerLink="/type" routerLinkActive="active" mat-list-item>
+                    <span class="menu-text">Type</span>
+                </a>
                 <span *ngIf="isConnected()">
                     <a routerLink="/profile" routerLinkActive="active" mat-list-item (click)="sidenav.close()">
-                    <mat-icon class="mr-3">account_circle</mat-icon>
-                        Profil</a>
+                        <span class="menu-text">Profil</span>
+                    </a>
                 </span>
-
             </mat-nav-list>
         </nav>
     </mat-sidenav>
-
     <mat-sidenav-content>
-        <mat-toolbar color="warn">
-            <span><button mat-button (click)="sidenav.toggle()"><mat-icon>view_headline</mat-icon></button><span>OJBento - Restaurant</span></span>
+        <div class="headband"></div>
+        <mat-toolbar>
+            <span *ngIf="screenWidth < 900">
+                <button mat-button>
+                    <mat-icon>view_headline</mat-icon>
+                </button>
+            </span>
             <span class="remaining-space"></span>
             <span *ngIf="!isConnected()">
-            <span>Connexion</span>
-            <button mat-button [matMenuTriggerFor]="menu">
-                <mat-icon class="material-icons-outlined">account_box</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu">
-                <button mat-menu-item routerLink="/login" routerLinkActive="active">
-                    <span>Déconnexion</span>
+                <button mat-button>
+                    <span class="infos__co">Connexion</span>
+                    <mat-icon class="material-icons-outlined">account_box</mat-icon>
                 </button>
-            </mat-menu>
             </span>
             <span *ngIf="isConnected()">
-            <button mat-button (click)="logout()"> {{user?.username}}
-                    <mat-icon class="material-icons-outlined" >account_box</mat-icon>
-            </button>
+                <button mat-button (click)="logout()">
+                    <span class="infos__co">Déconnexion</span>
+                    <mat-icon class="material-icons-outlined">account_box</mat-icon>
+                </button>
             </span>
         </mat-toolbar>
         <div class="container-fluid">
             <router-outlet></router-outlet>
-
         </div>
-
-
     </mat-sidenav-content>
 </mat-sidenav-container>

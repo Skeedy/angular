@@ -11,6 +11,7 @@ import {AssocService} from '../../service/assoc.service';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
+  isHidden = true;
   uri = Globals.APP_API + 'assoc/';
   assocs: Assoc[];
 
