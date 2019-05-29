@@ -11,26 +11,22 @@
                 <mat-icon class="phone-icon">phone_android</mat-icon>
                 <span class="ojbento__phone">05.56.69.92.42 </span>
             </div>
-            <span class="mt-2" *ngIf="isConnected()">-Bonjour {{user?.username}}-</span>
-        </div>
-        <nav>
-            <mat-nav-list>
-                <a routerLink="/product" routerLinkActive="active" mat-list-item>
-                    <span class="menu-text">Produit</span>
-                </a>
-                <a routerLink="/menu" routerLinkActive="active" mat-list-item>
-                    <span class="menu-text">Menu</span>
-                </a>
-                <a routerLink="/type" routerLinkActive="active" mat-list-item>
-                    <span class="menu-text">Type</span>
-                </a>
+            <nav>
+                <mat-nav-list *ngFor="let type of types" >
+
+                    <a routerLink="/type" mat-list-item>
+                        <span class="menu-text">{{type.name}}</span>
+                    </a>
+                </mat-nav-list>
+                <mat-nav-list>
                 <span *ngIf="isConnected()">
                     <a routerLink="/profile" routerLinkActive="active" mat-list-item (click)="sidenav.close()">
                         <span class="menu-text">Profil</span>
                     </a>
                 </span>
-            </mat-nav-list>
-        </nav>
+                </mat-nav-list>
+            </nav>
+        </div>
     </mat-sidenav>
     <mat-sidenav-content>
         <div class="headband"></div>
@@ -48,10 +44,16 @@
                 </button>
             </span>
             <span *ngIf="isConnected()">
+                <button class="infos__co" mat-button [matMenuTriggerFor]="menu">
+                    <mat-icon>shopping_cart</mat-icon>
+                    Panier
+                </button>
+                <mat-menu #menu="matMenu">
                 <button mat-button (click)="logout()">
-                    <span class="infos__co">Déconnexion</span>
+                    <span >Déconnexion</span>
                     <mat-icon class="material-icons-outlined">account_box</mat-icon>
                 </button>
+                </mat-menu>
             </span>
         </mat-toolbar>
         <div class="container-fluid">

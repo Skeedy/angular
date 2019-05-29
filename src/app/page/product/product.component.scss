@@ -2,10 +2,6 @@ header {
   width: 100%;
 }
 
-.card {
-  height: 175px;
-}
-
 .product {
   width: 100px;
   height: 100px;
@@ -30,6 +26,14 @@ header {
   &__card:not(:last-child) {
     margin-right: 25px;
   }
+}
+
+.card__product {
+  margin-right: 25px;
+}
+
+.product__img {
+  width: 175px;
 }
 
 .btn_choice {

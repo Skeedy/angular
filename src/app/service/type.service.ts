@@ -47,4 +47,7 @@ export class TypeService {
 
         return this.http.put(`${this.uri}${id}`, data);
     }
+    public getAssocsByType() {
+        return this.http.get(`${Globals.APP_API}type/assocs`);
+    }
 }

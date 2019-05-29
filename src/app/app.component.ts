@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {TitleService} from './service/title.service';
+import { TitleService } from './service/title.service';
+import { TypeService } from './service/type.service';
 import { AuthService} from './service/auth.service';
-import { MenuService} from './service/menu.service';
-import { Globals} from './globals';
 import { User } from './class/user';
+import { Type } from './class/type';
 
 @Component({
   selector: 'app-root',
@@ -15,8 +15,10 @@ export class AppComponent implements OnInit {
   screenWidth: number;
   opened: boolean;
   user: User|null;
+  types: Type[];
   constructor(private titleService: TitleService,
-              private auth: AuthService) {
+              private auth: AuthService,
+              private type: TypeService) {
     this.screenWidth = window.innerWidth;
     window.onresize = () => {
       this.screenWidth = window.innerWidth;
@@ -24,6 +26,7 @@ export class AppComponent implements OnInit {
   }
   ngOnInit(): void {
     this.titleService.init();
+    this.getTypes();
   }
   isConnected(): boolean {
     this.user = this.auth.currentUser;
@@ -31,5 +34,10 @@ export class AppComponent implements OnInit {
   }
   logout(): void {
     this.auth.logout();
+  }
+  getTypes() {
+    this.type.getTypes().subscribe(data => {
+      this.types = data;
+    });
   }
 }
