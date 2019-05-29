@@ -15,7 +15,8 @@
                         <button class="btn_choice" mdbBtn type="button" color="danger"
                                 mdbWavesEffect>+
                         </button>
-                        <span class="quantity m-3">{{assoc.quantity}}</span>
+                        <span *ngFor="let price of assoc.prices"
+                              class="quantity m-3">{{price.value}}</span>
                         <button class="btn_choice" mdbBtn type="button" color="primary"
                                 mdbWavesEffect>-
                         </button>
