@@ -14,4 +14,8 @@ export class AssocService {
   public getAssocs() {
     return this.http.get(`${this.uri}`);
   }
+
+  public getAssocsByType() {
+    return this.http.get(`${Globals.APP_API}type/assocs`);
+  }
 }

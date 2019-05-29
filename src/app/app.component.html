@@ -42,7 +42,7 @@
             </span>
             <span class="remaining-space"></span>
             <span *ngIf="!isConnected()">
-                <button mat-button>
+                <button mat-button [routerLink]="['/login']">
                     <span class="infos__co">Connexion</span>
                     <mat-icon class="material-icons-outlined">account_box</mat-icon>
                 </button>

@@ -22,9 +22,9 @@ export class ProductComponent implements OnInit {
   }
 
   getAssocs() {
-    this.assocService.getAssocs()
-        .subscribe((data: Assoc[]) => {
-          this.assocs = data;
+    this.assocService.getAssocsByType()
+        .subscribe((data) => {
+          console.log(data);
         });
   }
 }

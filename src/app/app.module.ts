@@ -21,8 +21,7 @@ import { IsSignedInGuard} from './guard/is-signed-in.guard';
 import { TypeComponent } from './page/type/type.component';
 import { TypeAddComponent } from './page/type/type-add/type-add.component';
 import { TypeEditComponent } from './page/type/type-edit/type-edit.component';
-import { ImgPipePipe } from './pipe/img-pipe.pipe';
-import { TypeProductPipe } from './pipe/type-product.pipe';
+import { ImgPipe } from './pipe/img.pipe';
 const appRoutes: Routes = [
     { path: 'product', component: ProductComponent, canActivate: [IsSignedInGuard], data : { title: 'Produits'} },
     { path: 'menu', component: MenuComponent, canActivate: [IsSignedInGuard], data : { title: 'Menu'} },
@@ -42,8 +41,7 @@ const appRoutes: Routes = [
         TypeComponent,
         TypeAddComponent,
         TypeEditComponent,
-        ImgPipePipe,
-        TypeProductPipe
+        ImgPipe,
     ],
     imports: [
         MDBBootstrapModule,
