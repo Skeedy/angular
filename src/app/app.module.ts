@@ -19,15 +19,11 @@ import { ErrorInterceptor } from './class/errorinterceptor';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { IsSignedInGuard} from './guard/is-signed-in.guard';
 import { TypeComponent } from './page/type/type.component';
-import { TypeAddComponent } from './page/type/type-add/type-add.component';
-import { TypeEditComponent } from './page/type/type-edit/type-edit.component';
 import { ImgPipe } from './pipe/img.pipe';
 const appRoutes: Routes = [
     { path: 'product', component: ProductComponent, canActivate: [IsSignedInGuard], data : { title: 'Produits'} },
     { path: 'menu', component: MenuComponent, canActivate: [IsSignedInGuard], data : { title: 'Menu'} },
     { path: 'type', component: TypeComponent, canActivate: [IsSignedInGuard], data : { title: 'Type'} },
-    { path: 'type/add', component: TypeAddComponent, canActivate: [IsSignedInGuard], data : { title: 'Add Type'} },
-    { path: 'type/edit/:id', component: TypeEditComponent, canActivate: [IsSignedInGuard], data : { title: 'Edit Type'} },
     { path: 'login', component: LoginComponent, data : { title: 'Login'} },
     { path: '', redirectTo: '/product', canActivate: [IsSignedInGuard], pathMatch: 'full' },
     { path: '**', component: AppComponent}
@@ -39,8 +35,6 @@ const appRoutes: Routes = [
         MenuComponent,
         LoginComponent,
         TypeComponent,
-        TypeAddComponent,
-        TypeEditComponent,
         ImgPipe,
     ],
     imports: [
