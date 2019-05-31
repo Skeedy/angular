@@ -20,6 +20,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { IsSignedInGuard} from './guard/is-signed-in.guard';
 import { TypeComponent } from './page/type/type.component';
 import { ImgPipe } from './pipe/img.pipe';
+import { ProductCardComponent } from './component/product-card/product-card.component';
 const appRoutes: Routes = [
     { path: 'product', component: ProductComponent, canActivate: [IsSignedInGuard], data : { title: 'Produits'} },
     { path: 'menu', component: MenuComponent, canActivate: [IsSignedInGuard], data : { title: 'Menu'} },
@@ -36,6 +37,7 @@ const appRoutes: Routes = [
         LoginComponent,
         TypeComponent,
         ImgPipe,
+        ProductCardComponent,
     ],
     imports: [
         MDBBootstrapModule,

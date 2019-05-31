@@ -6,7 +6,7 @@ import {Assoc} from '../../class/assoc';
 import {TypeService} from '../../service/type.service';
 import {AuthService} from '../../service/auth.service';
 import {User} from '../../class/user';
-import {CartService} from "../../service/cart.service";
+import {CartService} from '../../service/cart.service';
 
 @Component({
   selector: 'app-product',
