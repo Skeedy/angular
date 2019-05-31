@@ -14,26 +14,20 @@ import {CartService} from '../../service/cart.service';
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
-  uri = Globals.APP_API + 'assoc/';
   assocByTypes: any;
-  user: User;
+
 
   constructor(
-      private auth: AuthService,
       private typeService: TypeService,
       private router: Router,
-      private http: HttpClient,
-      private cartServ: CartService
+      private http: HttpClient
   ) {
   }
 
   ngOnInit() {
     this.getAssocs();
   }
-  isConnected(): boolean {
-    this.user = this.auth.currentUser;
-    return this.auth.isConnected();
-  }
+
   getAssocs() {
     this.typeService.getAssocsByType()
       .subscribe((data) => {
@@ -41,19 +35,4 @@ export class ProductComponent implements OnInit {
       });
   }
 
-  rmv(assoc: Assoc) {
-    this.cartServ.removeAssoc(assoc);
-  }
-
-  add(assoc: Assoc) {
-    this.cartServ.addAssoc(assoc);
-  }
-
-  getQuantity(assoc) {
-    return this.cartServ.getQuantity(assoc);
-  }
-
-  disabled() {
-    return this.cartServ.cart.getTotalQuantity() === 0;
-  }
 }

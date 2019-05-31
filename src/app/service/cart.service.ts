@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Cart} from '../class/cart';
 import {Assoc} from '../class/assoc';
+import {Globals} from '../globals';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,8 @@ export class CartService {
   public cart: Cart;
   constructor() {
     this.cart = new Cart();
+    const cartStrorage = JSON.parse(localStorage.getItem(Globals.APP_CART));
+    this.cart = Object.assign(this.cart, cartStrorage);
   }
 
   getQuantity(assoc) {
@@ -24,6 +27,7 @@ export class CartService {
 
   addAssoc(assoc: Assoc){
     this.cart.assocs.push(assoc);
+    this.storageCart();
   }
 
   removeAssoc(assoc: Assoc){
@@ -33,5 +37,10 @@ export class CartService {
     if (indexOf > -1) {
       this.cart.assocs.splice(indexOf, 1);
     }
+    this.storageCart();
+  }
+
+  storageCart() {
+    localStorage.setItem(Globals.APP_CART, JSON.stringify(this.cart));
   }
 }

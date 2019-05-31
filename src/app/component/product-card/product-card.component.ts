@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Assoc} from '../../class/assoc';
 import {AuthService} from '../../service/auth.service';
-import {TypeService} from '../../service/type.service';
-import {Router} from 'angular/router';
-import {HttpClient} from '@angular/common/http';
+import {User} from '../../class/user';
 import {CartService} from '../../service/cart.service';
+import {Type} from '../../class/type';
 
 @Component({
   selector: 'app-product-card',
@@ -12,24 +12,45 @@ import {CartService} from '../../service/cart.service';
 })
 export class ProductCardComponent implements OnInit {
 
-  constructor(private auth: AuthService,
-              private typeService: TypeService,
-              private router: Router,
-              private http: HttpClient,
-              private cartServ: CartService) { }
+  @Input() assoc: Assoc;
+  @Input() type: Type;
+  user: User;
+  quantity = 0;
+
+  constructor(
+      private auth: AuthService,
+      private cartServ: CartService) { }
 
   ngOnInit() {
-    this.getAssocs();
+    const cart = this.cartServ.cart;
+    cart.assocs.map( (assoc) => {
+      if (assoc.id === this.assoc.id) {
+        this.quantity ++;
+      }
+    });
   }
 
-  getAssocs() {
-    this.typeService.getAssocsByType()
-        .subscribe((data) => {
-          this.assocByTypes = data;
-        });
+  isConnected(): boolean {
+    this.user = this.auth.currentUser;
+    return this.auth.isConnected();
+  }
 
-    isConnected(): boolean {
-      this.user = this.auth.currentUser;
-      return this.auth.isConnected();
-    }
+
+  rmv(assoc: Assoc) {
+    this.quantity --;
+    this.cartServ.removeAssoc(assoc);
+  }
+
+  add(assoc: Assoc) {
+    this.quantity ++;
+    this.cartServ.addAssoc(assoc);
+  }
+
+  getQuantity(assoc) {
+    return this.quantity;
+  }
+
+  disabled() {
+    return this.quantity === 0;
+  }
 }
