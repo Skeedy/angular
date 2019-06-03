@@ -11,8 +11,12 @@
                 <mat-icon class="phone-icon">phone_android</mat-icon>
                 <span class="ojbento__phone">05.56.69.92.42 </span>
             </div>
-            <span *ngIf="isConnected()">
+            <span  *ngIf="isConnected()">
                 - Bonjour {{user.username}} -
+                <button mat-button (click)="logout()">
+                    <span >Déconnexion</span>
+                    <mat-icon class="material-icons-outlined">account_box</mat-icon>
+                </button>
             </span>
             <nav>
                 <mat-nav-list *ngFor="let type of types" >
@@ -23,7 +27,7 @@
                 </mat-nav-list>
                 <mat-nav-list>
                 <span *ngIf="isConnected()">
-                    <a routerLink="/profile" routerLinkActive="active" mat-list-item>
+                    <a routerLink="/" routerLinkActive="active" mat-list-item>
                         <span class="menu-text">Profil</span>
                     </a>
                 </span>
@@ -35,7 +39,7 @@
         <div class="headband"></div>
         <mat-toolbar>
             <span *ngIf="screenWidth < 900">
-                <button mat-button>
+                <button mat-button (click)="opened">
                     <mat-icon>view_headline</mat-icon>
                 </button>
             </span>
@@ -52,10 +56,7 @@
                     Panier {{ cart.getTotalQuantity() }}
                 </button>
                 <mat-menu #menu="matMenu">
-                <button mat-button (click)="logout()">
-                    <span >Déconnexion</span>
-                    <mat-icon class="material-icons-outlined">account_box</mat-icon>
-                </button>
+
                 </mat-menu>
             </span>
         </mat-toolbar>

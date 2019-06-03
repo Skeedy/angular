@@ -30,7 +30,7 @@ export class CartService {
     this.storageCart();
   }
 
-  removeAssoc(assoc: Assoc){
+  removeAssoc(assoc: Assoc) {
     const indexOf = this.cart.assocs.findIndex((a) => {
       return a.id === assoc.id;
     });
