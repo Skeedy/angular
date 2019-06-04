@@ -20,8 +20,10 @@
             </span>
             <nav>
                 <mat-nav-list *ngFor="let type of types" >
+                    <a routerLink="/{{ type.name }}"
 
-                    <a routerLink="/product" routerLinkActive="active" mat-list-item>
+                       routerLinkActive="active"
+                       mat-list-item>
                         <span class="menu-text">{{type.name}}</span>
                     </a>
                 </mat-nav-list>

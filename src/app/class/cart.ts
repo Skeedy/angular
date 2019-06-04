@@ -2,6 +2,7 @@ import {Assoc} from './assoc';
 import {Menu} from './menu';
 import {Price} from './price';
 
+
 export class Cart {
     assocs: Assoc[];
     menus: Menu[];
