@@ -55,7 +55,7 @@
             <span *ngIf="isConnected()">
                 <button class="infos__co" mat-button [matMenuTriggerFor]="menu">
                     <mat-icon>shopping_cart</mat-icon>
-                    Panier {{ cart.getTotalQuantity() }}
+                    Panier {{ cart.getTotalQuantity() }} - {{ cart.getPrice() }} €
                 </button>
                 <mat-menu #menu="matMenu">
 
