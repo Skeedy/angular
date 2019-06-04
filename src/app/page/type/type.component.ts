@@ -15,11 +15,10 @@ import {Price} from '../../class/price';
     styleUrls: ['./type.component.scss']
 })
 export class TypeComponent implements OnInit {
-    uri = Globals.APP_API + 'type/';
     types: Type[];
     prices: Price[];
 
-    constructor(private priceService: PriceService, private typeService: TypeService, private router: Router, private http: HttpClient) {
+    constructor(private priceService: PriceService, private typeService: TypeService) {
     }
 
     ngOnInit() {
