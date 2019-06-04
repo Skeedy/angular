@@ -25,7 +25,7 @@ export class CartService {
     return nb;
   }
 
-  addAssoc(assoc: Assoc){
+  addAssoc(assoc: Assoc) {
     this.cart.assocs.push(assoc);
     this.storageCart();
   }

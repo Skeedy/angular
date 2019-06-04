@@ -5,10 +5,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MatButtonModule } from '@angular/material';
-import { MatIconModule, MatToolbarModule, MatSidenavModule, MatCheckboxModule,
-     MatGridListModule, MatListModule, MatMenuModule,
-     MatCardModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+import {  MatToolbarModule, MatSidenavModule,
+    MatListModule, MatMenuModule, MatCardModule, MatFormFieldModule,
+    MatInputModule, MatProgressSpinnerModule, MatTableModule,
+    MatSelectModule, MatAutocompleteModule,
+    MatCheckboxModule, MatButtonModule, MatIconModule } from '@angular/material';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProductComponent } from './page/product/product.component';
@@ -22,7 +23,7 @@ import { TypeComponent } from './page/type/type.component';
 import { ImgPipe } from './pipe/img.pipe';
 import { ProductCardComponent } from './component/product-card/product-card.component';
 import { CommandComponent } from './page/command/command.component';
-
+import { RegisterComponent } from './component/register/register.component';
 
 const appRoutes: Routes = [
     { path: 'product', component: ProductComponent, canActivate: [IsSignedInGuard], data : { title: 'Produits'} },
@@ -30,9 +31,11 @@ const appRoutes: Routes = [
     { path: 'type', component: TypeComponent, canActivate: [IsSignedInGuard], data : { title: 'Type'} },
     { path: 'command', component: CommandComponent, canActivate: [IsSignedInGuard], data : { title: 'Historique'} },
     { path: 'login', component: LoginComponent, data : { title: 'Login'} },
+    { path: 'register', component: RegisterComponent, data : { title: 'Register'} },
     { path: '', redirectTo: '/product', canActivate: [IsSignedInGuard], pathMatch: 'full' },
     { path: '**', component: AppComponent}
 ];
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -43,15 +46,19 @@ const appRoutes: Routes = [
         ImgPipe,
         ProductCardComponent,
         CommandComponent,
+        RegisterComponent,
     ],
     imports: [
         MDBBootstrapModule,
         MatButtonModule,
         HttpClientModule,
+        MatSelectModule,
         MatInputModule,
         MatCardModule,
         MatMenuModule,
-        MatGridListModule,
+        MatTableModule,
+        MatProgressSpinnerModule,
+        MatAutocompleteModule,
         FormsModule,
         BrowserModule,
         BrowserAnimationsModule,

@@ -1,11 +1,11 @@
-import {Assoc} from './assoc';
-import {Menu} from './menu';
+import { Assoc } from './assoc';
+import { Menu } from './menu';
 
 export class Cart {
     assocs: Assoc[];
     menus: Menu[];
 
-    constructor(){
+    constructor() {
         this.assocs = [];
         this.menus = [];
     }
