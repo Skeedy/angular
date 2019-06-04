@@ -1,6 +1,6 @@
 <div class="container">
   <div fxLayout="row" fxLayoutAlign="center center" style="height: calc(100vh - 64px);">
-    <mat-card class="col-4">
+    <mat-card class="col-6">
       <ngb-alert type="secondary" *ngIf="connexionFailed" (close)="connexionFailed= false">
         Le couple identifiant que vous avez fourni est incorrect !
       </ngb-alert>
@@ -16,7 +16,13 @@
           <button class="mt-3" mat-flat-button color="warn"
           (click)="login()">Connexion</button>
         </form>
+        <div class="mt-3 text-center">
+          <div class="row justify-content-center">
+            <a href="http://admin.ojbento.fr/resetting/request">Mot de passe oublié ?</a>
+          </div>
+        </div>
       </mat-card-content>
     </mat-card>
+    <app-register class="col-6"></app-register>
   </div>
 </div>

@@ -25,12 +25,12 @@ export class CartService {
     return nb;
   }
 
-  addAssoc(assoc: Assoc){
+  addAssoc(assoc: Assoc) {
     this.cart.assocs.push(assoc);
     this.storageCart();
   }
 
-  removeAssoc(assoc: Assoc){
+  removeAssoc(assoc: Assoc) {
     const indexOf = this.cart.assocs.findIndex((a) => {
       return a.id === assoc.id;
     });
