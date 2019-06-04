@@ -8,6 +8,6 @@ export class Assoc {
     type: Type;
     product: Product;
     quantity: number;
-    prices: Price;
+    prices: Price[];
     image: Image;
 }
