@@ -15,7 +15,7 @@
         <span *ngIf="isConnected()">
                         <div class="d-flex justify-content-center">
                             <button class="btn_choice less" mdbBtn type="button" color="dark"
-                                    [disabled]="disabled()"
+                                    [disabled]="disabled(assoc)"
                                     (click)="rmv(assoc)"
                                     mdbWavesEffect>-
                             </button>

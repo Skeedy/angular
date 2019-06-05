@@ -24,12 +24,14 @@ import { ImgPipe } from './pipe/img.pipe';
 import { ProductCardComponent } from './component/product-card/product-card.component';
 import { CommandComponent } from './page/command/command.component';
 import { RegisterComponent } from './component/register/register.component';
+import { PanierComponent } from './page/panier/panier.component';
 
 const appRoutes: Routes = [
     { path: 'product', component: ProductComponent, canActivate: [IsSignedInGuard], data : { title: 'Produits'} },
     { path: 'menu', component: MenuComponent, canActivate: [IsSignedInGuard], data : { title: 'Menu'} },
     { path: 'type', component: TypeComponent, canActivate: [IsSignedInGuard], data : { title: 'Type'} },
     { path: 'command', component: CommandComponent, canActivate: [IsSignedInGuard], data : { title: 'Historique'} },
+    { path: 'panier', component: PanierComponent, canActivate: [IsSignedInGuard], data : { title: 'Panier'} },
     { path: 'login', component: LoginComponent, data : { title: 'Login'} },
     { path: 'register', component: RegisterComponent, data : { title: 'Register'} },
     { path: '', redirectTo: '/product', canActivate: [IsSignedInGuard], pathMatch: 'full' },
@@ -47,6 +49,7 @@ const appRoutes: Routes = [
         ProductCardComponent,
         CommandComponent,
         RegisterComponent,
+        PanierComponent,
     ],
     imports: [
         MDBBootstrapModule,

@@ -15,29 +15,24 @@ export class CartService {
     this.cart = Object.assign(this.cart, cartStrorage);
   }
 
-  getQuantity(assoc) {
-    let nb = 0;
-    this.cart.assocs.map( (as) => {
-      if (as.id === assoc.id) {
-        nb ++;
-      }
-    });
-    return nb;
+  getQuantity(assoc: Assoc) {
+    return this.cart.getCartQuantity(assoc);
+  }
+
+  getCart() {
+    return this.cart;
   }
 
   addAssoc(assoc: Assoc) {
-    this.cart.assocs.push(assoc);
+    this.cart.addAssoc(assoc);
     this.storageCart();
+    console.log(this.cart);
   }
 
   removeAssoc(assoc: Assoc) {
-    const indexOf = this.cart.assocs.findIndex((a) => {
-      return a.id === assoc.id;
-    });
-    if (indexOf > -1) {
-      this.cart.assocs.splice(indexOf, 1);
-    }
+    this.cart.removeAssoc(assoc);
     this.storageCart();
+    console.log(this.cart);
   }
 
   storageCart() {

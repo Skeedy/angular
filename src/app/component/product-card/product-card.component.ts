@@ -22,12 +22,7 @@ export class ProductCardComponent implements OnInit {
       private cartServ: CartService) { }
 
   ngOnInit() {
-    const cart = this.cartServ.cart;
-    cart.assocs.map( (assoc) => {
-      if (assoc.id === this.assoc.id) {
-        this.quantity ++;
-      }
-    });
+
   }
 
   isConnected(): boolean {
@@ -37,20 +32,18 @@ export class ProductCardComponent implements OnInit {
 
 
   rmv(assoc: Assoc) {
-    this.quantity --;
     this.cartServ.removeAssoc(assoc);
   }
 
   add(assoc: Assoc) {
-    this.quantity ++;
     this.cartServ.addAssoc(assoc);
   }
 
-  getQuantity(assoc) {
-    return this.quantity;
+  getQuantity(assoc: Assoc) {
+    return this.cartServ.getQuantity(assoc);
   }
 
-  disabled() {
-    return this.quantity === 0;
+  disabled(assoc: Assoc) {
+    return this.cartServ.getQuantity(assoc) === 0;
   }
 }

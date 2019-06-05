@@ -25,7 +25,9 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAssocs();
+    setTimeout(() => {
+      this.getAssocs();
+    }, 1000);
   }
 
   getAssocs() {

@@ -53,7 +53,8 @@
                 </button>
             </span>
             <span *ngIf="isConnected()">
-                <button class="infos__co" mat-button [matMenuTriggerFor]="menu">
+                <button class="infos__co" mat-button [matMenuTriggerFor]="menu"
+                        [routerLink]="['/panier']">
                     <mat-icon>shopping_cart</mat-icon>
                     Panier {{ cart.getTotalQuantity() }} - {{ cart.getPrice() }} €
                 </button>
