@@ -16,7 +16,7 @@ export class CommandService {
   uri = Globals.APP_API;
 
   public getCommands(id: User) {
-    return this.http.get(`${this.uri}auth/${id}/commands`);
+    return this.http.get(`${this.uri}user/${id}/commands`);
   }
   deleteCommand(id: number) {
     return this.http.delete(`${this.uri}/delete/${id}`);
