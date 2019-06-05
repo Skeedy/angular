@@ -72,7 +72,7 @@ export class Cart {
         let price = 0;
 
         this.cartRows.forEach((cartRow: CartRow) => {
-            const val = cartRow.assoc.prices.length > 0 ? cartRow.assoc.prices[0].value : 0;
+            const val: any = cartRow.assoc.prices.length > 0 ? cartRow.assoc.prices[0].value : 0;
             price += cartRow.nbCart * val;
         });
 
