@@ -4,6 +4,7 @@ import {AuthService} from '../../service/auth.service';
 import {User} from '../../class/user';
 import {CartService} from '../../service/cart.service';
 import {Type} from '../../class/type';
+import {TypePrice} from '../../class/type-price';
 
 @Component({
   selector: 'app-product-card',
@@ -30,6 +31,14 @@ export class ProductCardComponent implements OnInit {
     return this.auth.isConnected();
   }
 
+
+  getPrice(assoc: Assoc, typepricetype) {
+    const prices = assoc.prices;
+    const stdPrice = prices.find((price) => {
+      return price.type.value === TypePrice[typepricetype];
+    });
+    return stdPrice ? stdPrice.value : '0,00';
+  }
 
   rmv(assoc: Assoc) {
     this.cartServ.removeAssoc(assoc);

@@ -2,6 +2,7 @@ import {Assoc} from './assoc';
 import {Menu} from './menu';
 import {Price} from './price';
 import {CartRow} from './cart-row';
+import {TypePrice} from './type-price';
 
 
 export class Cart {
@@ -69,13 +70,20 @@ export class Cart {
     }
 
     getPrice() {
+        return this.getAssocPrice();
+    }
+
+    private getAssocPrice() {
         let price = 0;
 
         this.cartRows.forEach((cartRow: CartRow) => {
-            const val: any = cartRow.assoc.prices.length > 0 ? cartRow.assoc.prices[0].value : 0;
+            const prices = cartRow.assoc.prices;
+            const selectedPrice = prices.find( (price) => {
+                return price.type.value === TypePrice.STANDARD;
+            });
+            const val = selectedPrice ? parseFloat(selectedPrice.value) : 0;
             price += cartRow.nbCart * val;
         });
-
         return price;
     }
 }
