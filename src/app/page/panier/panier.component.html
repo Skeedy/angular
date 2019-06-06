@@ -1,6 +1,5 @@
 <ul>
   <li *ngFor="let row of assocRows">
-    {{ row.nbCart }} {{ row.priceAssoc | currency:'EUR':' ':'1.2-2' }} € : {{ row.assoc.quantity }}
-    - {{ row.assoc.product.name }} ::: {{ getPrice(row) | currency:'EUR':' ':'1.2-2' }} €
+    <app-cart-row [cartRow]="row"></app-cart-row>
   </li>
 </ul>

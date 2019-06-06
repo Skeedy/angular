@@ -25,6 +25,7 @@ import { ProductCardComponent } from './component/product-card/product-card.comp
 import { CommandComponent } from './page/command/command.component';
 import { RegisterComponent } from './component/register/register.component';
 import { PanierComponent } from './page/panier/panier.component';
+import { CartRowComponent } from './component/cart-row/cart-row.component';
 
 const appRoutes: Routes = [
     { path: 'product', component: ProductComponent, canActivate: [IsSignedInGuard], data : { title: 'Produits'} },
@@ -50,6 +51,7 @@ const appRoutes: Routes = [
         CommandComponent,
         RegisterComponent,
         PanierComponent,
+        CartRowComponent,
     ],
     imports: [
         MDBBootstrapModule,

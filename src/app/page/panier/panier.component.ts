@@ -22,8 +22,4 @@ export class PanierComponent implements OnInit {
       return cartRow;
     });
   }
-
-  getPrice(row: CartRow) {
-    return row.nbCart * parseFloat(row.priceAssoc);
-  }
 }
