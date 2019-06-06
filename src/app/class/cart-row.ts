@@ -4,4 +4,5 @@ export class CartRow {
   idAssoc: number;
   assoc: Assoc;
   nbCart: number;
+  priceAssoc: string;
 }
