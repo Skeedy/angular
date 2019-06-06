@@ -1,4 +1,11 @@
 <p>
-  {{ cartRow.nbCart }} {{ cartRow.priceAssoc | currency:'EUR':' ':'1.2-2' }} € : {{ cartRow.assoc.quantity }}
+
+  <button (click)="remove()" [disabled]="cartRow.nbCart < 2"> - </button>
+  {{ cartRow.nbCart }}
+  <button (click)="add()"> + </button>
+
+  {{ cartRow.priceAssoc | currency:'EUR':' ':'1.2-2' }} € : {{ cartRow.assoc.quantity }}
   - {{ cartRow.assoc.product.name }} ::: {{ getPrice() | currency:'EUR':' ':'1.2-2' }} €
+
+  <button (click)="delete()"> x </button>
 </p>

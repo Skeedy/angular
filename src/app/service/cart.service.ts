@@ -35,6 +35,10 @@ export class CartService {
     console.log(this.cart);
   }
 
+  refresh() {
+    this.storageCart();
+  }
+
   storageCart() {
     localStorage.setItem(Globals.APP_CART, JSON.stringify(this.cart));
   }

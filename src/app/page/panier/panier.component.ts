@@ -14,12 +14,6 @@ export class PanierComponent implements OnInit {
 
   ngOnInit() {
     const cart = this.cartServ.getCart();
-    this.assocRows = cart.getList().map( (cartRow: CartRow) => {
-      const price = cartRow.assoc.prices.find((price) => {
-        return price.type.value === TypePrice.STANDARD;
-      });
-      cartRow.priceAssoc = price.value;
-      return cartRow;
-    });
+    this.assocRows = cart.getList();
   }
 }
