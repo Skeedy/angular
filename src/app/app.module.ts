@@ -22,6 +22,7 @@ import { IsSignedInGuard} from './guard/is-signed-in.guard';
 import { TypeComponent } from './page/type/type.component';
 import { ImgPipe } from './pipe/img.pipe';
 import { ProductCardComponent } from './component/product-card/product-card.component';
+import { MenuCardComponent } from './component/menu-card/menu-card.component';
 import { CommandComponent } from './page/command/command.component';
 import { RegisterComponent } from './component/register/register.component';
 import { PanierComponent } from './page/panier/panier.component';
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
         TypeComponent,
         ImgPipe,
         ProductCardComponent,
+        MenuCardComponent,
         CommandComponent,
         RegisterComponent,
         PanierComponent,

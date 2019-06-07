@@ -10,4 +10,5 @@ export class Assoc {
     quantity: number;
     prices: Price[];
     image: Image;
+    isDish: boolean;
 }

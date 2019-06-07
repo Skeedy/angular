@@ -1,8 +1,12 @@
 import { Assoc } from './assoc';
+import {Menu} from './menu';
 
 export class CartRow {
-  idAssoc: number;
-  assoc: Assoc;
+  static ASSOC = 'assoc';
+  static MENU = 'menu';
+
+  assoc: Assoc|null;
+  menu: Menu|null;
   nbCart: number;
-  priceAssoc: string;
+  price: string;
 }

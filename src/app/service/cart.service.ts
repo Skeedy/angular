@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Cart} from '../class/cart';
 import {Assoc} from '../class/assoc';
 import {Globals} from '../globals';
+import {Menu} from '../class/menu';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,12 @@ export class CartService {
     this.cart = Object.assign(this.cart, cartStrorage);
   }
 
-  getQuantity(assoc: Assoc) {
-    return this.cart.getCartQuantity(assoc);
+  getAssocQuantity(assoc: Assoc) {
+    return this.cart.getCartAssocQuantity(assoc);
+  }
+
+  getMenuQuantity(menu: Menu) {
+    return this.cart.getCartMenuQuantity(menu);
   }
 
   getCart() {
@@ -26,20 +31,19 @@ export class CartService {
   addAssoc(assoc: Assoc) {
     this.cart.addAssoc(assoc);
     this.storageCart();
-    console.log(this.cart);
+  }
+
+  addMenu(menu: Menu) {
+    this.cart.addMenu(menu);
+    this.storageCart();
   }
 
   removeAssoc(assoc: Assoc) {
     this.cart.removeAssoc(assoc);
     this.storageCart();
-    console.log(this.cart);
   }
 
-  refresh() {
-    this.storageCart();
-  }
-
-  storageCart() {
+  private storageCart() {
     localStorage.setItem(Globals.APP_CART, JSON.stringify(this.cart));
   }
 }
