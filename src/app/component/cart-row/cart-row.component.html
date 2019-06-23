@@ -1,11 +1,25 @@
-<p>
 
-  <button (click)="remove()" [disabled]="cartRow.nbCart < 2"> - </button>
-  {{ cartRow.nbCart }}
-  <button (click)="add()"> + </button>
+  <div class="d-flex justify-content-around align-items-center">
+      <div>
+          <figure>
+              <img src="{{ cartRow?.assoc.image.imgpath |imgpath }}" alt="logo de produits japonais"
+                   style="width: 100px; height: 100px;">
+          </figure>
+      </div>
+      <div>
+          <button type="button" mdbBtn color="danger" mdbWavesEffect size="xs" style="padding: 0;
+    height: 35px; width: 35px;"
+                  (click)="remove()"[disabled]="cartRow.nbCart < 2"> - </button>
+          {{ cartRow.nbCart }}
+          <button type="button" mdbBtn color="danger" mdbWavesEffect style="padding: 0; height: 35px; width: 35px;"
+                  (click)="add()"> +
+          </button>
+      </div>
+      <div>
+          x {{ cartRow.assoc.quantity }} - {{ cartRow.assoc.type.name }} {{ cartRow.assoc.product.name }}
+      </div>
+      <div class="text-center">
+          {{ cartRow.priceAssoc }} €
+      </div>
+  </div>
 
-  {{ cartRow.priceAssoc | currency:'EUR':' ':'1.2-2' }} € : {{ cartRow.assoc.quantity }}
-  - {{ cartRow.assoc.product.name }} ::: {{ getPrice() | currency:'EUR':' ':'1.2-2' }} €
-
-  <button (click)="delete()"> x </button>
-</p>

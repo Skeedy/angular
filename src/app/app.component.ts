@@ -4,8 +4,8 @@ import { TypeService } from './service/type.service';
 import { AuthService} from './service/auth.service';
 import { User } from './class/user';
 import { Type } from './class/type';
-import {CartService} from "./service/cart.service";
-import {Cart} from "./class/cart";
+import {CartService} from './service/cart.service';
+import {Cart} from './class/cart';
 
 @Component({
   selector: 'app-root',
