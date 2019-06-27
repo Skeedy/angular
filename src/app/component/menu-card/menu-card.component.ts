@@ -28,27 +28,25 @@ export class MenuCardComponent implements OnInit {
   }
 
 
-  /*getPrice(menu: Menu, typepricetype) {
+  getPrice(menu: Menu, typepricetype) {
     const prices = menu.prices;
     const stdPrice = prices.find((price) => {
       return price.type.value === TypePrice[typepricetype];
     });
     return stdPrice ? stdPrice.value : '0,00';
-  }*/
-
-  rmv(menu: Menu) {
-
   }
 
   add(menu: Menu) {
     this.cartServ.addMenu(menu);
   }
-
+  remove(menu: Menu) {
+    this.cartServ.removeMenu(menu);
+  }
   getQuantity(menu: Menu) {
     return this.cartServ.getMenuQuantity(menu);
   }
 
-  // disabled(menu: Menu) {
-  //   return this.cartServ.getQuantityMenu(menu) === 0;
-  // }
+  disabled(menu: Menu) {
+    return this.cartServ.getMenuQuantity(menu) === 0;
+  }
 }

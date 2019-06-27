@@ -19,13 +19,16 @@
                 </button>
             </span>
             <nav>
-                <mat-nav-list *ngFor="let type of types" >
-                    <a routerLink="/{{ type.name }}"
+                <mat-nav-list  >
+                    <ul *ngFor="let type of types">
+                    <li><a routerLink="/product"
 
                        routerLinkActive="active"
                        mat-list-item>
                         <span class="menu-text">{{type.name}}</span>
-                    </a>
+                    </a></li>
+                    </ul>
+                    <a routerLink="/menu">Menus</a>
                 </mat-nav-list>
                 <mat-nav-list>
                 <span *ngIf="isConnected()">

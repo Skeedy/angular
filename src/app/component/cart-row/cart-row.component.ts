@@ -35,10 +35,10 @@ export class CartRowComponent implements OnInit {
     const price = this.cartRow.assoc.prices.find((price) => {
       return price.type.value === TypePrice.STANDARD;
     });
-    this.cartRow.priceAssoc = price.value;
+    this.cartRow.price = price.value;
   }
 
   private getPrice() {
-    return this.cartRow.nbCart * parseFloat(this.cartRow.priceAssoc);
+    return this.cartRow.nbCart * parseFloat(this.cartRow.price);
   }
 }

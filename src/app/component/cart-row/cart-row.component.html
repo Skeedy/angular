@@ -4,7 +4,7 @@
   {{ cartRow.nbCart }}
   <button (click)="add()"> + </button>
 
-  {{ cartRow.priceAssoc | currency:'EUR':' ':'1.2-2' }} € : {{ cartRow.assoc.quantity }}
+  {{ cartRow.price | currency:'EUR':' ':'1.2-2' }} € : {{ cartRow.assoc.quantity }}
   - {{ cartRow.assoc.product.name }} ::: {{ getPrice() | currency:'EUR':' ':'1.2-2' }} €
 
   <button (click)="delete()"> x </button>
