@@ -1,5 +1,16 @@
-<ul>
-  <li *ngFor="let row of Rows">
-    <app-cart-row [cartRow]="row"></app-cart-row>
-  </li>
-</ul>
+<section>
+  <header>
+      <h2 class="text-center mt-3 mb-3">Mes commandes</h2>
+  </header>
+  <div class="container-fluid">
+    <app-cart-row *ngFor="let row of assocRows" [cartRow]="row"></app-cart-row>
+    <div class="d-flex justify-content-end mr-5">
+      <span style="margin-right: 80px;">
+        <strong>
+          Total:
+          {{ cartServ.cart.getPrice() | currency:'EUR':' ':'1.2-2'}} €
+        </strong>
+      </span>
+    </div>
+  </div>
+</section>

@@ -4,6 +4,7 @@ import {CartRow} from "../../class/cart-row";
 import {TypePrice} from '../../class/type-price';
 import {Assoc} from "../../class/assoc";
 
+
 @Component({
   selector: 'app-panier',
   templateUrl: './panier.component.html',
@@ -12,6 +13,7 @@ import {Assoc} from "../../class/assoc";
 export class PanierComponent implements OnInit {
 
   private Rows: CartRow[];
+
   constructor(private cartServ: CartService) { }
 
   ngOnInit() {
