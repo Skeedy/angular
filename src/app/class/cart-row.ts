@@ -8,6 +8,7 @@ export class CartRow {
   assoc: Assoc|null;
   menu: Menu|null;
   nbCart: number;
-  price: string;
   priceAssoc: string;
+  priceMenu: string;
+
 }

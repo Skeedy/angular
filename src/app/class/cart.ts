@@ -7,13 +7,9 @@ import {TypePrice} from './type-price';
 
 export class Cart {
     cartRows: CartRow[];
-    assocs: Assoc[];
-    menus: Menu[];
 
     constructor() {
         this.cartRows = [];
-        this.assocs = [];
-        this.menus = [];
     }
 
     getList() {
@@ -51,12 +47,20 @@ export class Cart {
         }
     }
 
+    removeMenu(menu: Menu) {
+        this.removeElement(CartRow.MENU, menu);
+    }
+
     removeAssoc(assoc: Assoc) {
-        const cartRowIndex = this.cartRows.filter((cartRow: CartRow) => {
-            return cartRow.assoc !== undefined;
+        this.removeElement(CartRow.ASSOC, assoc);
+    }
+    private removeElement(elementName: string, element: Assoc|Menu) {
+        let cartRowIndex = this.cartRows.filter((cartRow: CartRow) => {
+            return cartRow[elementName];
         }).findIndex((cartRow: CartRow) => {
-            return cartRow.assoc.id === assoc.id;
+            return cartRow[elementName].id === element.id;
         });
+
         if (cartRowIndex > -1) {
             const cartRow = this.cartRows[cartRowIndex];
             cartRow.nbCart -= 1;

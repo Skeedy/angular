@@ -42,7 +42,10 @@ export class CartService {
     this.cart.removeAssoc(assoc);
     this.storageCart();
   }
-
+  removeMenu(menu: Menu) {
+    this.cart.removeMenu(menu);
+    this.storageCart();
+  }
   private storageCart() {
     localStorage.setItem(Globals.APP_CART, JSON.stringify(this.cart));
   }

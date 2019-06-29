@@ -1,4 +1,17 @@
 
+  <button (click)="remove()" [disabled]="cartRow.nbCart < 2"> - </button>
+  {{ cartRow.nbCart }}
+  <button (click)="add()"> + </button>
+  <span *ngIf="cartRow?.assoc">
+  {{ cartRow.priceAssoc | currency:'EUR':' ':'1.2-2' }} € : {{ cartRow.assoc.quantity }}
+  - {{ cartRow.assoc.product.name }} ::: {{ getPrice() | currency:'EUR':' ':'1.2-2' }} €
+  </span>
+  <span *ngIf="cartRow?.menu">
+  {{ cartRow.priceMenu | currency:'EUR':' ':'1.2-2' }} € :  {{ cartRow.menu.name }} ::: {{ getPrice() | currency:'EUR':' ':'1.2-2' }} €
+  </span>
+  <button (click)="delete()"> x </button>
+</p>
+<--
   <div class="d-flex justify-content-around align-items-center">
       <div>
           <figure>
@@ -22,4 +35,3 @@
           {{ cartRow.priceAssoc }} €
       </div>
   </div>
-

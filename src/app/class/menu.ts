@@ -7,4 +7,5 @@ export class Menu {
     assocs: Assoc[];
     prices: Price[];
     isLunch: boolean;
+    price: string;
 }

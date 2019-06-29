@@ -1,6 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {CartService} from '../../service/cart.service';
-import {CartRow} from '../../class/cart-row';
+import { Component, OnInit } from '@angular/core';
+import {CartService} from "../../service/cart.service";
+import {CartRow} from "../../class/cart-row";
+import {TypePrice} from '../../class/type-price';
+import {Assoc} from "../../class/assoc";
+
 
 @Component({
   selector: 'app-panier',
@@ -9,16 +12,12 @@ import {CartRow} from '../../class/cart-row';
 })
 export class PanierComponent implements OnInit {
 
-  private assocRows: CartRow[];
-  private cartRow: CartRow;
+  private Rows: CartRow[];
+
   constructor(private cartServ: CartService) { }
 
   ngOnInit() {
     const cart = this.cartServ.getCart();
-    this.assocRows = cart.getList();
-  }
-
-  private getPrice() {
-    return this.cartRow.nbCart * parseFloat(this.cartRow.priceAssoc);
+    this.Rows = cart.getList();
   }
 }
