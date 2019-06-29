@@ -14,10 +14,11 @@ export class CartRowComponent implements OnInit {
 
   @Input() cartRow: CartRow;
 
-  constructor(private cartServ: CartService) { }
+  constructor(private cartServ: CartService) {
+  }
 
   ngOnInit() {
-      this.calculPrice();
+    this.calculPrice();
 
   }
 
@@ -50,6 +51,11 @@ export class CartRowComponent implements OnInit {
   }
 
   private getPrice() {
-    return this.cartRow.nbCart * parseFloat(this.cartRow.priceAssoc);
+    if (this.cartRow.assoc) {
+      return this.cartRow.nbCart * parseFloat(this.cartRow.priceAssoc);
+    }
+    if (this.cartRow.menu) {
+      return this.cartRow.nbCart * parseFloat(this.cartRow.priceMenu);
+    }
   }
 }
