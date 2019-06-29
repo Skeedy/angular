@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {CartRow} from '../../class/cart-row';
 import {TypePrice} from '../../class/type-price';
 import {CartService} from '../../service/cart.service';
+import {Menu} from "../../class/menu";
+import {Assoc} from "../../class/assoc";
 
 @Component({
   selector: 'app-cart-row',
@@ -15,7 +17,8 @@ export class CartRowComponent implements OnInit {
   constructor(private cartServ: CartService) { }
 
   ngOnInit() {
-      this.calculAssocPrice();
+      this.calculPrice();
+
   }
 
   private add() {
@@ -31,14 +34,22 @@ export class CartRowComponent implements OnInit {
     this.cartServ.removeAssoc(this.cartRow.assoc);
   }
 
-  private calculAssocPrice() {
-    const price = this.cartRow.assoc.prices.find((price) => {
-      return price.type.value === TypePrice.STANDARD;
-    });
-    this.cartRow.price = price.value;
+  private calculPrice() {
+    if (this.cartRow.assoc) {
+      const price = this.cartRow.assoc.prices.find((price) => {
+        return price.type.value === TypePrice.STANDARD;
+      });
+      this.cartRow.priceAssoc = price.value;
+    }
+    if (this.cartRow.menu) {
+      const price = this.cartRow.menu.prices.find((price) => {
+        return price.type.value === TypePrice.STANDARD;
+      });
+      this.cartRow.priceMenu = price.value;
+    }
   }
 
   private getPrice() {
-    return this.cartRow.nbCart * parseFloat(this.cartRow.price);
+    return this.cartRow.nbCart * parseFloat(this.cartRow.priceAssoc);
   }
 }

@@ -29,11 +29,11 @@ import { PanierComponent } from './page/panier/panier.component';
 import { CartRowComponent } from './component/cart-row/cart-row.component';
 
 const appRoutes: Routes = [
-    { path: 'product', component: ProductComponent, canActivate: [IsSignedInGuard], data : { title: 'Produits'} },
-    { path: 'menu', component: MenuComponent, canActivate: [IsSignedInGuard], data : { title: 'Menu'} },
-    { path: 'type', component: TypeComponent, canActivate: [IsSignedInGuard], data : { title: 'Type'} },
+    { path: 'product', component: ProductComponent, data : { title: 'Produits'} },
+    { path: 'menu', component: MenuComponent, data : { title: 'Menu'} },
+    { path: 'type', component: TypeComponent, data : { title: 'Type'} },
     { path: 'command', component: CommandComponent, canActivate: [IsSignedInGuard], data : { title: 'Historique'} },
-    { path: 'panier', component: PanierComponent, canActivate: [IsSignedInGuard], data : { title: 'Panier'} },
+    { path: 'panier', component: PanierComponent, data : { title: 'Panier'} },
     { path: 'login', component: LoginComponent, data : { title: 'Login'} },
     { path: 'register', component: RegisterComponent, data : { title: 'Register'} },
     { path: '', redirectTo: '/product', canActivate: [IsSignedInGuard], pathMatch: 'full' },

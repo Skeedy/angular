@@ -60,6 +60,7 @@ export class Cart {
         }).findIndex((cartRow: CartRow) => {
             return cartRow[elementName].id === element.id;
         });
+
         if (cartRowIndex > -1) {
             const cartRow = this.cartRows[cartRowIndex];
             cartRow.nbCart -= 1;

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {CartService} from "../../service/cart.service";
 import {CartRow} from "../../class/cart-row";
 import {TypePrice} from '../../class/type-price';
+import {Assoc} from "../../class/assoc";
+
 @Component({
   selector: 'app-panier',
   templateUrl: './panier.component.html',
@@ -9,11 +11,11 @@ import {TypePrice} from '../../class/type-price';
 })
 export class PanierComponent implements OnInit {
 
-  private assocRows : CartRow[];
+  private Rows: CartRow[];
   constructor(private cartServ: CartService) { }
 
   ngOnInit() {
     const cart = this.cartServ.getCart();
-    this.assocRows = cart.getList();
+    this.Rows = cart.getList();
   }
 }
