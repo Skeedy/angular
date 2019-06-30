@@ -1,7 +1,7 @@
 export class Register {
   fname: string;
   lname: string;
-  username: string;
+  username =  this.fname + this.lname;
   phone: string;
   city: string;
   password: string;
