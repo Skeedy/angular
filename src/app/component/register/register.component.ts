@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../service/auth.service';
+import { MustMatch } from "../../functions/must-match.validator";
 
 @Component({
   selector: 'app-register',
@@ -27,17 +28,20 @@ export class RegisterComponent implements OnInit {
         Validators.required,
         Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$')
       ])),
+      confirmPassword: [ null, Validators.required],
       email: new FormControl('', Validators.compose([
         Validators.required,
         Validators.pattern('^(([^<>()\\[\\]\\.,;:\\s@\\"]+(\\.[^<>()\\[\\]\\.,;:\\s@\\"]+)*)|(\\".+\\"))@(([^<>()[\\]\\.,;:\\s@\\"]+\\.)+[^<>()[\\]\\.,;:\\s@\\"]{2,})$')
       ]))
-    });
+    },
+        { validator: MustMatch('password', 'confirmPassword')
+        });
   }
 
   get password() {
     return this.registerForm.get('password');
   }
-
+  get f() { return this.registerForm.controls; }
   register() {
     const val = this.registerForm.value;
     this.loading = true;

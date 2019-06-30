@@ -50,8 +50,12 @@
                placeholder="{{ password.errors?.pattern ?
                        'Minimum eight characters, at least one uppercase letter, one lowercase letter and one number' :
                        'Confirmer password ' }}"
-               formControlName="password"
+               formControlName="confirmPassword"
                autocomplete="Off" required/>
+        <div *ngIf="f.confirmPassword.errors" class="invalid-feedback">
+          <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+          <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+        </div>
       </mat-form-field>
       <mat-form-field>
         <input matInput type="email"
