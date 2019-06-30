@@ -55,6 +55,7 @@ export class Cart {
         this.removeElement(CartRow.ASSOC, assoc);
     }
     private removeElement(elementName: string, element: Assoc|Menu) {
+
         let cartRowIndex = this.cartRows.filter((cartRow: CartRow) => {
             return cartRow[elementName];
         }).findIndex((cartRow: CartRow) => {

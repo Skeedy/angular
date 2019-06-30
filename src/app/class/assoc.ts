@@ -12,4 +12,5 @@ export class Assoc {
     image: Image;
     isDish: boolean;
     price: string;
+    forMenu: boolean;
 }
