@@ -1,0 +1,52 @@
+<div [@dialog] *ngIf="visible" class="dialog">
+  <div class="dialog-headband"></div>
+  <div class="dialog-container">
+    <div>
+      <h3 class="text-center p-3">{{ assoc.type.name }} {{ assoc.product.name }}</h3>
+      <div class="dialog-picture">
+        <figure>
+          <img src="{{ assoc.image?.imgpath |imgpath }}" alt="logo de produits japonais"
+               style="width: 100px; height: 100px;">
+        </figure>
+        <div>
+<!--          <button (click)="remove()" [disabled]="cartRow.nbCart < 2"> - </button>-->
+<!--          {{ cartRow.nbCart }}-->
+<!--          <button (click)="add()"> + </button>-->
+        </div>
+      </div>
+      <div class="dialog-allergens">
+        <p>Allergènes</p>
+<!--          <figure><img src="{{ assoc?.allergens.image.imgpath |imgpath }}" alt="logo de produits japonais"-->
+<!--                       style="width: 100px; height: 100px;"></figure>-->
+<!--          <figure><img src="{{ assoc?.allergens.image.imgpath |imgpath }}" alt="logo de produits japonais"-->
+<!--                       style="width: 100px; height: 100px;"></figure>-->
+<!--          <figure><img src="{{ assoc?.allergens.image.imgpath |imgpath }}" alt="logo de produits japonais"-->
+<!--                       style="width: 100px; height: 100px;"></figure>-->
+<!--          <figure><img src="{{ assoc?.allergens.image.imgpath |imgpath }}" alt="logo de produits japonais"-->
+<!--                       style="width: 100px; height: 100px;"></figure>-->
+      </div>
+    </div>
+    <div>
+      <div class="dialog-price">
+        <span>{{ assoc.quantity }} | {{ assoc?.type.prices.value }}</span>
+        <span></span>
+      </div>
+      <div>
+        <h3></h3>
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+      <div>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, consequatur libero
+          odio pariatur quam repellat veritatis. Alias atque autem beatae deserunt doloremque eaque ipsum laboriosam quo quod, sint tempore velit.
+        </p>
+      </div>
+    </div>
+  </div>
+  <button *ngIf="closable" (click)="close()" aria-label="Close" class="dialog__close-btn">X</button>
+</div>
+<div *ngIf="visible" class="overlay" (click)="close()"></div>

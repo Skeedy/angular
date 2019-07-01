@@ -27,6 +27,7 @@ import { CommandComponent } from './page/command/command.component';
 import { RegisterComponent } from './component/register/register.component';
 import { PanierComponent } from './page/panier/panier.component';
 import { CartRowComponent } from './component/cart-row/cart-row.component';
+import {DialogComponent} from './component/dialog/dialog.component';
 
 const appRoutes: Routes = [
     { path: 'product', component: ProductComponent, data : { title: 'Produits'} },
@@ -54,6 +55,7 @@ const appRoutes: Routes = [
         RegisterComponent,
         PanierComponent,
         CartRowComponent,
+        DialogComponent
     ],
     imports: [
         MDBBootstrapModule,
