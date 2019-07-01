@@ -26,6 +26,7 @@ export class DialogComponent implements OnInit {
   @Input() closable = true;
   @Input() visible: boolean;
   @Input() assoc: Assoc;
+  @Input() cartRow: CartRow;
   @Input() type: Type;
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
@@ -38,7 +39,11 @@ export class DialogComponent implements OnInit {
     this.visibleChange.emit(this.visible);
   }
 
-  InfoProduct(assoc: Assoc, menu: Menu) {
-    return this.cartServ.cart;
+  private add() {
+    this.cartServ.addAssoc(this.cartRow.assoc);
+  }
+
+  private remove() {
+    this.cartServ.removeAssoc(this.cartRow.assoc);
   }
 }

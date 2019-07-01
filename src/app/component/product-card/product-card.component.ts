@@ -16,6 +16,7 @@ export class ProductCardComponent implements OnInit {
   @Input() assoc: Assoc;
   @Input() type: Type;
   user: User;
+  showDialog = false;
   quantity = 0;
 
   constructor(

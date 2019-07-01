@@ -9,40 +9,36 @@
                style="width: 100px; height: 100px;">
         </figure>
         <div>
-<!--          <button (click)="remove()" [disabled]="cartRow.nbCart < 2"> - </button>-->
-<!--          {{ cartRow.nbCart }}-->
-<!--          <button (click)="add()"> + </button>-->
+          <button (click)="remove()" [disabled]="cartRow.nbCart < 2"> - </button>
+          {{ cartRow.nbCart }}
+          <button (click)="add()"> + </button>
         </div>
       </div>
       <div class="dialog-allergens">
         <p>Allergènes</p>
-<!--          <figure><img src="{{ assoc?.allergens.image.imgpath |imgpath }}" alt="logo de produits japonais"-->
-<!--                       style="width: 100px; height: 100px;"></figure>-->
-<!--          <figure><img src="{{ assoc?.allergens.image.imgpath |imgpath }}" alt="logo de produits japonais"-->
-<!--                       style="width: 100px; height: 100px;"></figure>-->
-<!--          <figure><img src="{{ assoc?.allergens.image.imgpath |imgpath }}" alt="logo de produits japonais"-->
-<!--                       style="width: 100px; height: 100px;"></figure>-->
-<!--          <figure><img src="{{ assoc?.allergens.image.imgpath |imgpath }}" alt="logo de produits japonais"-->
-<!--                       style="width: 100px; height: 100px;"></figure>-->
+          <figure *ngIf="assoc?.allergens?.image">
+            <img
+               src="{{ assoc?.allergens?.image?.imgpath |imgpath }}"
+               alt="logo de produits japonais"
+                       style="width: 100px; height: 100px;">
+          </figure>
       </div>
     </div>
     <div>
       <div class="dialog-price">
-        <span>{{ assoc.quantity }} | {{ assoc?.type.prices.value }}</span>
+        <span>{{ assoc.quantity }} | </span>
         <span></span>
       </div>
       <div>
-        <h3></h3>
+        <h3>Composition</h3>
         <ul>
-          <li></li>
-          <li></li>
-          <li></li>
+          <li>{{ assoc.composition }}
+          </li>
         </ul>
       </div>
       <div>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, consequatur libero
-          odio pariatur quam repellat veritatis. Alias atque autem beatae deserunt doloremque eaque ipsum laboriosam quo quod, sint tempore velit.
+          {{ assoc.description }}
         </p>
       </div>
     </div>

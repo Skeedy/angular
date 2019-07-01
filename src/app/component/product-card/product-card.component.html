@@ -1,6 +1,6 @@
 <div class="card-product m-5">
     <div class="view view-cascade overlay waves-light" mdbWavesEffect>
-        <figure class="product__box">
+        <figure (click)="showDialog = !showDialog" class="product__box">
             <img class="product__img" *ngIf="assoc?.image"
                  src="{{ assoc?.image?.imgpath |imgpath }}">
             <figcaption class="story__caption"
@@ -29,4 +29,7 @@
                         </div>
 
     </div>
+    <app-dialog [assoc]="assoc" [type]="type" [(visible)]="showDialog">
+        <button (click)="showDialog = !showDialog" class="btn">Close</button>
+    </app-dialog>
 </div>
