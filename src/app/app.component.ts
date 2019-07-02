@@ -15,7 +15,7 @@ import {Cart} from './class/cart';
 export class AppComponent implements OnInit {
   title = 'Restaurant';
   screenWidth: number;
-  opened: boolean;
+  opened = false;
   user: User|null;
   types: Type[];
   cart: Cart;

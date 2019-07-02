@@ -2,8 +2,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import {CartRow} from '../../class/cart-row';
 import {TypePrice} from '../../class/type-price';
 import {CartService} from '../../service/cart.service';
-import {Menu} from "../../class/menu";
-import {Assoc} from "../../class/assoc";
 
 @Component({
   selector: 'app-cart-row',
@@ -19,7 +17,6 @@ export class CartRowComponent implements OnInit {
 
   ngOnInit() {
     this.calculPrice();
-
   }
 
   private addAssoc() {

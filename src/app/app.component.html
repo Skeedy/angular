@@ -5,9 +5,9 @@
             <img src="../assets/img/logo.jpg">
         </figure>
         <div class="ojbento" >
-            <span class="ojbento__adresse mb-1">3 rue du Général de Gaulle </span>
-            <span class="ojbento__adresse mb-1">33480 Castelnau de Médoc</span>
-            <div class="d-flex justify-content-center align-items-center">
+            <span class="ojbento__adresse mb-2">3 rue du Général de Gaulle </span>
+            <span class="ojbento__adresse mb-2">33480 Castelnau de Médoc</span>
+            <div class="d-flex justify-content-center align-items-center mb-2">
                 <mat-icon class="phone-icon">phone_android</mat-icon>
                 <span class="ojbento__phone">05.56.69.92.42 </span>
             </div>
@@ -23,18 +23,22 @@
             <nav>
                 <mat-nav-list  >
                     <ul *ngFor="let type of types">
-                        <li><a routerLink="/product"
-
-                               routerLinkActive="active"
-                               mat-list-item>
-                            <span class="menu-text">{{type.name}}</span>
-                        </a></li>
+                        <li>
+                            <a class="pb-3" routerLink="/product/" fragment="{{ type.name }}"
+                               routerLinkActive="active" >
+                                {{type.name}}
+                            </a>
+                        </li>
                     </ul>
-                    <a routerLink="/menu">Menus</a>
+                    <ul>
+                        <li>
+                            <a routerLink="/menu" routerLinkActive="active">Menus</a>
+                        </li>
+                    </ul>
                 </mat-nav-list>
                 <mat-nav-list>
                 <span *ngIf="isConnected()">
-                    <a routerLink="/" routerLinkActive="active" mat-list-item>
+                    <a routerLink="/profil" routerLinkActive="active" mat-list-item>
                         <span class="menu-text">Profil</span>
                     </a>
                 </span>
@@ -42,19 +46,22 @@
             </nav>
         </div>
     </mat-sidenav>
-    <mat-sidenav-content>
+    <mat-sidenav-content mode="side">
         <div class="headband"></div>
         <mat-toolbar>
+            <span>
+                <a routerLink="/home" routerLinkActive="active" mat-list-item>Présentation</a>
+            </span>
             <span *ngIf="screenWidth < 900">
-                <button mat-button (click)="opened">
+                <button  type="button" mat-button (click)="sidenav.toggle()">
                     <mat-icon>view_headline</mat-icon>
                 </button>
             </span>
             <span class="remaining-space"></span>
             <span *ngIf="!isConnected()">
                 <button mat-button [routerLink]="['/login']">
-                    <span class="infos__co">Connexion</span>
                     <mat-icon class="material-icons-outlined">account_box</mat-icon>
+                    <span class="infos__co">Connexion</span>
                 </button>
             </span>
                 <button class="infos__co" mat-button [matMenuTriggerFor]="menu"
@@ -66,7 +73,7 @@
 
                 </mat-menu>
         </mat-toolbar>
-        <div class="container-fluid">
+        <div>
             <router-outlet></router-outlet>
         </div>
     </mat-sidenav-content>

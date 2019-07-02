@@ -27,9 +27,12 @@ import { CommandComponent } from './page/command/command.component';
 import { RegisterComponent } from './component/register/register.component';
 import { PanierComponent } from './page/panier/panier.component';
 import { CartRowComponent } from './component/cart-row/cart-row.component';
+import {DialogComponent} from './component/dialog/dialog.component';
+import { HomeComponent } from './page/home/home.component';
 
 const appRoutes: Routes = [
     { path: 'product', component: ProductComponent, data : { title: 'Produits'} },
+    { path: 'home', component: HomeComponent, data : { title: 'Page d\'acceuil'} },
     { path: 'menu', component: MenuComponent, data : { title: 'Menu'} },
     { path: 'type', component: TypeComponent, data : { title: 'Type'} },
     { path: 'command', component: CommandComponent, canActivate: [IsSignedInGuard], data : { title: 'Historique'} },
@@ -54,6 +57,8 @@ const appRoutes: Routes = [
         RegisterComponent,
         PanierComponent,
         CartRowComponent,
+        DialogComponent,
+        HomeComponent
     ],
     imports: [
         MDBBootstrapModule,
