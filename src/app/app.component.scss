@@ -1,3 +1,7 @@
+a {
+  color: white;
+}
+
 .remaining-space{
   flex: 1 1 auto;
 }
@@ -38,8 +42,15 @@ mat-sidenav{
   width: 300px;
 }
 
-nav mat-nav-list a {
-  color: white;
+mat-nav-list ul {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+ }
+
+mat-nav-list li {
+  display: flex;
+  justify-content: center;
 }
 
 nav mat-nav-list a.active{
