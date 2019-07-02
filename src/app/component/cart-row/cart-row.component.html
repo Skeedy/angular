@@ -1,12 +1,15 @@
 <p>
-  <button (click)="remove()" [disabled]="cartRow.nbCart < 2"> - </button>
-  {{ cartRow.nbCart }}
-  <button (click)="add()"> + </button>
   <span *ngIf="cartRow?.assoc">
+  <button (click)="removeAssoc()" [disabled]="cartRow.nbCart < 2"> - </button>
+  {{ cartRow.nbCart }}
+  <button (click)="addAssoc()"> + </button>
   {{ cartRow.priceAssoc | currency:'EUR':' ':'1.2-2' }} € : {{ cartRow.assoc.quantity }}
   - {{ cartRow.assoc.product.name }} ::: {{ getPrice() | currency:'EUR':' ':'1.2-2' }} €
   </span>
   <span *ngIf="cartRow?.menu">
+    <button (click)="removeMenu()" [disabled]="cartRow.nbCart < 2"> - </button>
+    {{ cartRow.nbCart }}
+    <button (click)="addMenu()"> + </button>
   {{ cartRow.priceMenu | currency:'EUR':' ':'1.2-2' }} € :  {{ cartRow.menu.name }} ::: {{ getPrice() | currency:'EUR':' ':'1.2-2' }} €
   </span>
   <button (click)="delete()"> x </button>

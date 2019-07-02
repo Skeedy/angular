@@ -19,14 +19,20 @@ export class CartRowComponent implements OnInit {
     this.calculPrice();
   }
 
-  private add() {
+  private addAssoc() {
     this.cartServ.addAssoc(this.cartRow.assoc);
   }
 
-  private remove() {
+  private removeAssoc() {
     this.cartServ.removeAssoc(this.cartRow.assoc);
   }
+  private addMenu() {
+    this.cartServ.addMenu(this.cartRow.menu);
+  }
 
+  private removeMenu() {
+    this.cartServ.removeMenu(this.cartRow.menu);
+  }
   private delete() {
     this.cartRow.nbCart = 1;
     this.cartServ.removeAssoc(this.cartRow.assoc);

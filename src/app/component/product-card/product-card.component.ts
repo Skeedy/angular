@@ -26,7 +26,6 @@ export class ProductCardComponent implements OnInit {
   ngOnInit() {
 
   }
-
   isConnected(): boolean {
     this.user = this.auth.currentUser;
     return this.auth.isConnected();

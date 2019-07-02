@@ -1,10 +1,10 @@
-<div class="card-product m-5">
+<div class="card-product m-5" *ngIf="assoc.forMenu === false">
     <div class="view view-cascade overlay waves-light" mdbWavesEffect>
         <figure (click)="showDialog = !showDialog" class="product__box">
             <img class="product__img" *ngIf="assoc?.image"
                  src="{{ assoc?.image?.imgpath |imgpath }}">
             <figcaption class="story__caption"
-                        *ngFor="let price of assoc.prices">{{price.value}}€
+                        *ngFor="let price of assoc.prices">{{price.value | currency:'EUR':' ':'1.2-2' }}€
             </figcaption>
         </figure>
     </div>
