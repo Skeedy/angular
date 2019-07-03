@@ -5,6 +5,7 @@ export class CartRow {
   static ASSOC = 'assoc';
   static MENU = 'menu';
 
+  isMenuRow: boolean;
   assoc: Assoc|null;
   menu: Menu|null;
   nbCart: number;

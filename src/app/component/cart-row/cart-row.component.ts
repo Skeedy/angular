@@ -2,6 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {CartRow} from '../../class/cart-row';
 import {TypePrice} from '../../class/type-price';
 import {CartService} from '../../service/cart.service';
+import {Assoc} from '../../class/assoc';
+import {Menu} from '../../class/menu';
 
 @Component({
   selector: 'app-cart-row',
@@ -19,23 +21,28 @@ export class CartRowComponent implements OnInit {
     this.calculPrice();
   }
 
-  private addAssoc() {
-    this.cartServ.addAssoc(this.cartRow.assoc);
+  private addAssoc(assoc: Assoc) {
+    this.cartServ.addAssoc(assoc);
   }
 
-  private removeAssoc() {
-    this.cartServ.removeAssoc(this.cartRow.assoc);
+  private removeAssoc(assoc: Assoc) {
+    this.cartServ.removeAssoc(assoc);
   }
-  private addMenu() {
-    this.cartServ.addMenu(this.cartRow.menu);
+  private addMenu(menu: Menu) {
+    this.cartServ.addMenu(menu);
   }
 
-  private removeMenu() {
-    this.cartServ.removeMenu(this.cartRow.menu);
+  private removeMenu(menu: Menu) {
+    this.cartServ.removeMenu(menu);
   }
-  private delete() {
+  private delete(cartRow: CartRow) {
     this.cartRow.nbCart = 1;
-    this.cartServ.removeAssoc(this.cartRow.assoc);
+    if (cartRow.isMenuRow) {
+      this.cartServ.removeMenu(this.cartRow.menu);
+    } else {
+      this.cartServ.removeAssoc(this.cartRow.assoc);
+    }
+
   }
 
   private calculPrice() {

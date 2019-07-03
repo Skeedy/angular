@@ -3,14 +3,17 @@ import {Cart} from '../class/cart';
 import {Assoc} from '../class/assoc';
 import {Globals} from '../globals';
 import {Menu} from '../class/menu';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
+  private uri = Globals.APP_API + 'command/new';
+
   public cart: Cart;
-  constructor() {
+  constructor(private http: HttpClient) {
     this.cart = new Cart();
     const cartStrorage = JSON.parse(localStorage.getItem(Globals.APP_CART));
     this.cart = Object.assign(this.cart, cartStrorage);
@@ -48,5 +51,9 @@ export class CartService {
   }
   private storageCart() {
     localStorage.setItem(Globals.APP_CART, JSON.stringify(this.cart));
+  }
+
+  commander(data){
+    return this.http.post(this.uri, data);
   }
 }

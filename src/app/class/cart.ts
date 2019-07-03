@@ -43,6 +43,7 @@ export class Cart {
             cartRow = new CartRow();
             cartRow[elementName] = element;
             cartRow.nbCart = 1;
+            cartRow.isMenuRow = elementName === CartRow.MENU;
             this.cartRows.push(cartRow);
         }
     }
@@ -56,10 +57,11 @@ export class Cart {
     }
     private removeElement(elementName: string, element: Assoc|Menu) {
 
-        let cartRowIndex = this.cartRows.filter((cartRow: CartRow) => {
-            return cartRow[elementName];
-        }).findIndex((cartRow: CartRow) => {
-            return cartRow[elementName].id === element.id;
+        let cartRowIndex = this.cartRows.findIndex((cartRow: CartRow) => {
+            if (cartRow[elementName]) {
+                return cartRow[elementName].id === element.id;
+            }
+            return false;
         });
 
         if (cartRowIndex > -1) {
@@ -69,6 +71,7 @@ export class Cart {
                 this.cartRows.splice(cartRowIndex, 1);
             }
         }
+
     }
 
     getCartAssocQuantity(assoc: Assoc) {

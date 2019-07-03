@@ -3,7 +3,7 @@
       <h2 class="text-center mt-3 mb-3">Mes commandes</h2>
   </header>
   <div class="container-fluid">
-    <app-cart-row *ngFor="let row of Rows" [cartRow]="row"></app-cart-row>
+    <app-cart-row *ngFor="let row of rows" [cartRow]="row"></app-cart-row>
     <div class="d-flex justify-content-end mr-5">
       <span style="margin-right: 80px;">
         <strong>
@@ -13,4 +13,5 @@
       </span>
     </div>
   </div>
+  <button (click)="commander()">Commander</button>
 </section>

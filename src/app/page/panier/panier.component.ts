@@ -12,12 +12,18 @@ import {Assoc} from "../../class/assoc";
 })
 export class PanierComponent implements OnInit {
 
-  private Rows: CartRow[];
+  private rows: CartRow[];
 
   constructor(private cartServ: CartService) { }
 
   ngOnInit() {
     const cart = this.cartServ.getCart();
-    this.Rows = cart.getList();
+    this.rows = cart.getList();
+    console.log(this.rows);
+  }
+  private commander(){
+    this.cartServ.commander({ cartrows : this.rows }).subscribe( (data) => {
+      console.log(data);
+    });
   }
 }
