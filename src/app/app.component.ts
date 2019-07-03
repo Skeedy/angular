@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { TitleService } from './service/title.service';
 import { TypeService } from './service/type.service';
 import { AuthService} from './service/auth.service';
@@ -33,7 +33,11 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.titleService.init();
     this.getTypes();
+    window.onbeforeunload = () => {
+      localStorage.removeItem('user-cart');
+    };
   }
+
   isConnected(): boolean {
     this.user = this.auth.currentUser;
     return this.auth.isConnected();
@@ -46,4 +50,5 @@ export class AppComponent implements OnInit {
       this.types = data;
     });
   }
+
 }

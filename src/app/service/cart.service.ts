@@ -53,7 +53,7 @@ export class CartService {
     localStorage.setItem(Globals.APP_CART, JSON.stringify(this.cart));
   }
 
-  commander(data){
+  commander(data) {
     return this.http.post(this.uri, data);
   }
 }

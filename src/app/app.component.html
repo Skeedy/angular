@@ -13,7 +13,7 @@
             </div>
             <div *ngIf="isConnected()">
             <span>
-                - Bonjour {{user.username}} -
+                - Bonjour {{user.fname}} {{user.lname}} -
                 <button mat-button (click)="logout()">
                     <span >Déconnexion</span>
                     <mat-icon class="material-icons-outlined">account_box</mat-icon>
