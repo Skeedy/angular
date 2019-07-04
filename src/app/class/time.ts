@@ -1,3 +1,3 @@
 export class Time {
-    hour_command: string;
+    hourCommand: string;
 }

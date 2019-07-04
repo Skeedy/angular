@@ -13,5 +13,8 @@
       </span>
     </div>
   </div>
+  <select >
+    <option *ngFor="let time of times"> {{ time.hourCommand }}</option>
+  </select>
   <button (click)="commander()">Commander</button>
 </section>
