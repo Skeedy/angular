@@ -13,8 +13,15 @@
       </span>
     </div>
   </div>
-  <select >
-    <option *ngFor="let time of times"> {{ time.hourCommand }}</option>
-  </select>
+
+<mat-form-field>
+    <mat-label>Choisissez votre horaire</mat-label>
+
+    <mat-select  [(ngModel)]="hour">
+      <mat-option *ngFor="let time of times" [value]="time.value">
+        {{time.hourCommand}}
+      </mat-option>
+  </mat-select>
+</mat-form-field>
   <button (click)="commander()">Commander</button>
 </section>

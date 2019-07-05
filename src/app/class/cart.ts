@@ -3,13 +3,15 @@ import {Menu} from './menu';
 import {Price} from './price';
 import {CartRow} from './cart-row';
 import {TypePrice} from './type-price';
+import {Time} from './time';
 
 
 export class Cart {
     cartRows: CartRow[];
-
+    time: Time[];
     constructor() {
         this.cartRows = [];
+        this.time = [];
     }
 
     getList() {

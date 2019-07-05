@@ -9,7 +9,8 @@ import {  MatToolbarModule, MatSidenavModule,
     MatListModule, MatMenuModule, MatCardModule, MatFormFieldModule,
     MatInputModule, MatProgressSpinnerModule, MatTableModule,
     MatSelectModule, MatAutocompleteModule,
-    MatCheckboxModule, MatButtonModule, MatIconModule } from '@angular/material';
+    MatCheckboxModule, MatButtonModule, MatIconModule,
+    MatRadioModule} from '@angular/material';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProductComponent } from './page/product/product.component';
@@ -82,6 +83,7 @@ const appRoutes: Routes = [
         MatListModule,
         ReactiveFormsModule,
         MatFormFieldModule,
+        MatRadioModule,
         NgbModule,
         RouterModule.forRoot(appRoutes),
         MDBBootstrapModule.forRoot()
