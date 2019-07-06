@@ -18,7 +18,7 @@
     <mat-label>Choisissez votre horaire</mat-label>
 
     <mat-select  [(ngModel)]="hour">
-      <mat-option *ngFor="let time of times" [value]="time.value">
+      <mat-option *ngFor="let time of times" [value]="time">
         {{time.hourCommand}}
       </mat-option>
   </mat-select>

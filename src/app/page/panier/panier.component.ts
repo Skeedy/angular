@@ -15,7 +15,7 @@ import {TimeService} from '../../service/time.service';
 export class PanierComponent implements OnInit {
   private rows: CartRow[];
   private times: Time[];
-  private hour: string;
+  private hour: Time;
   private midi: boolean;
 
   constructor(private cartServ: CartService,
@@ -34,13 +34,12 @@ export class PanierComponent implements OnInit {
     console.log(this.times);
   }
   private commander() {
-    if (this.rows) {
-      console.log(this.hour);
-      this.cartServ.commander({cartrows: this.rows}).subscribe((data) => {
-        console.log('Commande envoyée !');
-      }, (err) => {
-        console.log(err);
-      });
-    }
+    this.cartServ.addTime(this.hour);
+    console.log(this.hour);
+    this.cartServ.commander({cartrows: this.rows}).subscribe((data) => {
+      console.log('Commande envoyée !');
+    }, (err) => {
+      console.log(err);
+    });
   }
 }

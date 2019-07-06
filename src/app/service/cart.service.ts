@@ -4,6 +4,7 @@ import {Assoc} from '../class/assoc';
 import {Globals} from '../globals';
 import {Menu} from '../class/menu';
 import {HttpClient} from '@angular/common/http';
+import { Time } from "../class/time";
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +31,10 @@ export class CartService {
   getCart() {
     return this.cart;
   }
-
+  addTime(time: Time) {
+    this.cart.addTime(time);
+    this.storageCart();
+  }
   addAssoc(assoc: Assoc) {
     this.cart.addAssoc(assoc);
     this.storageCart();

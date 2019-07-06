@@ -4,6 +4,7 @@ import { Menu } from './menu';
 export class CartRow {
   static ASSOC = 'assoc';
   static MENU = 'menu';
+  static TIME = 'time';
 
   isMenuRow: boolean;
   assoc: Assoc|null;
