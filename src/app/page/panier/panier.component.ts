@@ -18,6 +18,7 @@ export class PanierComponent implements OnInit {
   private times: Time[];
   private hour: Time;
   user: User;
+  loged: boolean;
   selectFormControl = new FormControl('', Validators.required);
   private hourForm: FormGroup;
 
@@ -30,12 +31,19 @@ export class PanierComponent implements OnInit {
     const cart = this.cartServ.getCart();
     this.rows = cart.getList();
     this.getTime();
+    this.isConnected();
+    this.checklogin();
     this.hourForm = this.fb.group({
       horaire: [ null, Validators.required ]});
+
   }
   isConnected(): boolean {
     this.user = this.auth.currentUser;
     return this.auth.isConnected();
+  }
+  checklogin() {
+    this.loged = this.isConnected();
+    return this.loged;
   }
   getTime() {
     this.timeServ.getTime().subscribe(data => {

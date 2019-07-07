@@ -28,7 +28,7 @@
     <div class="col-sm-5 d-flex justify-content-around align-items-center">
 
       <form class="form-content" [formGroup]="hourForm">
-        <mat-form-field >
+        <mat-form-field>
           <mat-label>Horaire</mat-label>
           <mat-select formControlName="horaire" [(ngModel)]="hour" required>
             <mat-option *ngFor="let time of times"
@@ -42,7 +42,7 @@
         </mat-form-field>
 
         <button (click)="commander()"
-                [disabled]="hourForm.invalid">Commander</button>
+                [disabled]="hourForm.invalid || !isConnected()">Commander</button>
       </form>
     </div>
   </div>
