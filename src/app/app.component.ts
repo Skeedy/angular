@@ -33,9 +33,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.titleService.init();
     this.getTypes();
-    window.onbeforeunload = () => {
-      localStorage.removeItem('user-cart');
-    };
+
   }
 
   isConnected(): boolean {

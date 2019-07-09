@@ -1,41 +1,88 @@
-<p>
-  <span *ngIf="!cartRow.isMenuRow">
-  <button (click)="removeAssoc(cartRow.assoc)" [disabled]="cartRow.nbCart < 2"> - </button>
-  {{ cartRow.nbCart }}
-  <button (click)="addAssoc(cartRow.assoc)"> + </button>
-  {{ cartRow.priceAssoc | currency:'EUR':' ':'1.2-2' }} € : {{ cartRow.assoc.quantity }}
-  - {{ cartRow.assoc.product.name }} ::: {{ getPrice() | currency:'EUR':' ':'1.2-2' }} €
-  </span>
-  <span *ngIf="cartRow.isMenuRow">
-    <button (click)="removeMenu(cartRow.menu)" [disabled]="cartRow.nbCart < 2"> - </button>
-    {{ cartRow.nbCart }}
-    <button (click)="addMenu(cartRow.menu)"> + </button>
-  {{ cartRow.priceMenu | currency:'EUR':' ':'1.2-2' }} € :  {{ cartRow.menu.name }} ::: {{ getPrice() | currency:'EUR':' ':'1.2-2' }} €
-  </span>
-  <button (click)="delete(cartRow)"> x </button>
-</p>
-<!--
-  <div class="d-flex justify-content-around align-items-center">
-      <div>
-          <figure>
-              <img src="{{ cartRow?.assoc.image.imgpath |imgpath }}" alt="logo de produits japonais"
-                   style="width: 100px; height: 100px;">
-          </figure>
+<div class="row align-items-center" *ngIf="!cartRow.isMenuRow">
+  <div class=" col-sm-8 ">
+    <div class="row align-items-center justify-content-center" >
+
+      <div class="d-flex justify-content-around align-items-center col-sm-3">
+        <div>
+        <button type="button" mdbBtn color="dark"
+                mdbWavesEffect size="xs" style="padding: 0; height: 35px; width: 35px;"
+                (click)="removeAssoc(cartRow.assoc)"
+                [disabled]="cartRow.nbCart < 2">
+          -
+        </button>
+        {{ cartRow.nbCart }}
+        <button type="button" mdbBtn color="dark"
+                mdbWavesEffect size="xs" style="padding: 0; height: 35px; width: 35px;"
+                (click)="addAssoc(cartRow.assoc)">
+          +
+        </button>
+        </div>
       </div>
-      <div>
-          <button type="button" mdbBtn color="danger" mdbWavesEffect size="xs" style="padding: 0;
-    height: 35px; width: 35px;"
-                  (click)="remove()"[disabled]="cartRow.nbCart < 2"> - </button>
-          {{ cartRow.nbCart }}
-          <button type="button" mdbBtn color="danger" mdbWavesEffect style="padding: 0; height: 35px; width: 35px;"
-                  (click)="add()"> +
-          </button>
+      <div class="d-flex justify-content-between align-items-center col-sm-4">
+        {{ cartRow.assoc.quantity }} {{cartRow.assoc.type.name}}s {{ cartRow.assoc.product.name }}
+        <button type="button" mdbBtn color="danger"
+                mdbWavesEffect size="xs"
+                style="padding: 0; height: 35px; width: 35px;"
+                (click)="delete(cartRow)"> x </button>
       </div>
-      <div>
-          x {{ cartRow.assoc.quantity }} - {{ cartRow.assoc.type.name }} {{ cartRow.assoc.product.name }}
-      </div>
-      <div class="text-center">
-          {{ cartRow.priceAssoc }} €
-      </div>
+    </div>
   </div>
--->
+
+  <div class="col-sm-4">
+    <div class="row " *ngIf="!cartRow.isMenuRow">
+      <div class="col-sm-5 text-center">
+        {{ cartRow.priceAssoc | currency:'EUR':' ':'1.2-2' }} €
+      </div>
+      <div class="col-sm-5 text-center">
+        {{ getPrice() | currency:'EUR':' ':'1.2-2' }} €
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="row align-items-center" *ngIf="cartRow.isMenuRow">
+  <div class=" col-sm-8">
+    <div class="row align-items-center justify-content-center" >
+
+      <div class="d-flex justify-content-around align-items-center col-sm-3">
+        <div>
+          <button type="button" mdbBtn color="dark"
+                  mdbWavesEffect size="xs" style="padding: 0; height: 35px; width: 35px;"
+                  (click)="removeMenu(cartRow.menu)"
+                  [disabled]="cartRow.nbCart < 2">
+            -
+          </button>
+          {{ cartRow.nbCart }}
+          <button type="button" mdbBtn color="dark"
+                  mdbWavesEffect size="xs" style="padding: 0; height: 35px; width: 35px;"
+                  (click)="addMenu(cartRow.menu)">
+            +
+          </button>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between align-items-center col-sm-4">
+        {{ cartRow.menu.name }}
+        <button type="button" mdbBtn color="danger"
+                mdbWavesEffect size="xs"
+                style="padding: 0; height: 35px; width: 35px;"
+                (click)="delete(cartRow)"> x </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-4">
+    <div class="row" *ngIf="cartRow.isMenuRow">
+      <div class="col-sm-5 text-center">
+        {{ cartRow.priceMenu | currency:'EUR':' ':'1.2-2' }} €
+      </div>
+      <div class="col-sm-5 text-center">
+        {{ getPrice() | currency:'EUR':' ':'1.2-2' }} €
+      </div>
+    </div>
+  </div>
+</div>
+
+

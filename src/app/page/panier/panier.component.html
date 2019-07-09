@@ -1,27 +1,56 @@
-<section>
-  <header>
-      <h2 class="text-center mt-3 mb-3">Mes commandes</h2>
-  </header>
-  <div class="container-fluid">
-    <app-cart-row *ngFor="let row of rows" [cartRow]="row"></app-cart-row>
-    <div class="d-flex justify-content-end mr-5">
+<header>
+  <h2 class="text-center mt-3 mb-3">Ma commande</h2>
+</header>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 d-flex justify-content-center">
+
+      <div class="col-sm-3 text-center">Quantité</div>
+      <div class="col-sm-4 text-center">Produits</div>
+    </div>
+    <div class="col-sm-4  d-flex">
+      <div class="col-sm-5 p-0 text-center">Prix unitaire</div>
+      <div class="col-sm-5 p-0 text-center">Prix total</div>
+
+    </div>
+  </div>
+  <app-cart-row *ngFor="let row of rows" [cartRow]="row"></app-cart-row>
+  <div class="d-flex justify-content-end mr-5">
       <span style="margin-right: 80px;">
         <strong>
           Total:
           {{ cartServ.cart.getPrice() | currency:'EUR':' ':'1.2-2'}} €
         </strong>
       </span>
+  </div>
+  <div class="row">
+    <div class="col-sm-5"></div>
+    <div class="col-sm-5 d-flex justify-content-around align-items-center">
+
+      <form class="form-content" [formGroup]="hourForm">
+        <mat-form-field>
+          <mat-label>Horaire</mat-label>
+          <mat-select formControlName="horaire" [(ngModel)]="hour" required>
+            <mat-option *ngFor="let time of times"
+                        [value]="time">
+              {{time.hourCommand}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="selectFormControl.hasError('required')">
+            Ce champ est requis
+          </mat-error>
+        </mat-form-field>
+
+        <button type="button" mdbBtn color="success"
+                mdbWavesEffect
+                (click)="commander()"
+                [disabled]="hourForm.invalid || !isConnected()">Commander</button>
+      </form>
     </div>
   </div>
 
-<mat-form-field>
-    <mat-label>Choisissez votre horaire</mat-label>
+</div>
 
-    <mat-select  [(ngModel)]="hour">
-      <mat-option *ngFor="let time of times" [value]="time.value">
-        {{time.hourCommand}}
-      </mat-option>
-  </mat-select>
-</mat-form-field>
-  <button (click)="commander()">Commander</button>
-</section>
+
+
+

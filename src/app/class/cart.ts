@@ -17,7 +17,9 @@ export class Cart {
     getList() {
         return this.cartRows;
     }
-
+    addTime(time: Time) {
+        this.time.push(time);
+    }
     addMenu(menu: Menu) {
         this.addElement(CartRow.MENU, menu);
     }
