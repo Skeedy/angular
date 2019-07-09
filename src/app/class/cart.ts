@@ -129,7 +129,7 @@ export class Cart {
         }).forEach((cartRow: CartRow) => {
             const prices = cartRow[elementName].prices;
             const selectedPrice = prices.find( (price: Price) => {
-                return price.type.value === TypePrice.STANDARD;
+                return price.type.value === TypePrice.Standard;
             });
             const val = selectedPrice ? parseFloat(selectedPrice.value) : 0;
             price += cartRow.nbCart * val;

@@ -10,7 +10,7 @@ import {  MatToolbarModule, MatSidenavModule,
     MatInputModule, MatProgressSpinnerModule, MatTableModule,
     MatSelectModule, MatAutocompleteModule,
     MatCheckboxModule, MatButtonModule, MatIconModule,
-    MatRadioModule} from '@angular/material';
+    MatRadioModule, MatChipsModule} from '@angular/material';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProductComponent } from './page/product/product.component';
@@ -30,9 +30,12 @@ import { PanierComponent } from './page/panier/panier.component';
 import { CartRowComponent } from './component/cart-row/cart-row.component';
 import {DialogComponent} from './component/dialog/dialog.component';
 import { HomeComponent } from './page/home/home.component';
+import { ProfilComponent } from './page/profil/profil.component';
+import { BasicFormComponent } from './component/basic-form/basic-form.component';
 
 const appRoutes: Routes = [
     { path: 'product', component: ProductComponent, data : { title: 'Produits'} },
+    { path: 'profil', component: ProfilComponent, data : { title: 'Profil'} },
     { path: 'home', component: HomeComponent, data : { title: 'Page d\'acceuil'} },
     { path: 'menu', component: MenuComponent, data : { title: 'Menu'} },
     { path: 'type', component: TypeComponent, data : { title: 'Type'} },
@@ -48,6 +51,7 @@ const appRoutes: Routes = [
     declarations: [
         AppComponent,
         ProductComponent,
+        ProfilComponent,
         MenuComponent,
         LoginComponent,
         TypeComponent,
@@ -59,7 +63,9 @@ const appRoutes: Routes = [
         PanierComponent,
         CartRowComponent,
         DialogComponent,
-        HomeComponent
+        HomeComponent,
+        ProfilComponent,
+        BasicFormComponent
     ],
     imports: [
         MDBBootstrapModule,
@@ -67,6 +73,7 @@ const appRoutes: Routes = [
         HttpClientModule,
         MatSelectModule,
         MatInputModule,
+        MatChipsModule,
         MatCardModule,
         MatMenuModule,
         MatTableModule,

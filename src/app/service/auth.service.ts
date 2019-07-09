@@ -38,18 +38,35 @@ export class AuthService {
           return data;
         }));
   }
+
   public get tokenData() {
     return JSON.parse(localStorage.getItem(Globals.APP_USER_TOKEN));
   }
+
   public isConnected(): boolean {
       return !!this.loginSubject.value && !!this.userSubject.value;
   }
+
+  public saveProfile(fname, lname, phone, city, password, email) {
+    const data = {fname, lname, phone, city, password, email};
+    return this.http.put<User>(Globals.APP_API + 'auth/profile/edit', data)
+      .pipe(map((user) => {
+        if (user) {
+          localStorage.setItem(Globals.APP_USER, JSON.stringify(user));
+          this.userSubject.next(user);
+          this.userObs = this.userSubject.asObservable();
+        }
+        return this.userSubject.value;
+      }));
+  }
+
   public logout() {
     localStorage.removeItem(Globals.APP_USER_TOKEN);
     localStorage.removeItem(Globals.APP_USER);
     this.loginSubject.next(null);
     this.userSubject.next(null);
   }
+
   public profile() {
     return this.http.get<User>(Globals.APP_API + 'auth/profile', {})
         .pipe(map((user) => {
@@ -61,6 +78,7 @@ export class AuthService {
           return user;
         }));
   }
+
   public register(data) {
     const obj = {
       fname: data.fname,
@@ -73,7 +91,8 @@ export class AuthService {
     };
     return this.http.post(Globals.APP_API + 'auth/register', obj);
   }
+
   public get currentUser(): User|null {
-      return  this.userSubject.value;
+      return this.userSubject.value;
   }
 }
