@@ -13,8 +13,7 @@
         {{ cartRow.nbCart }}
         <button type="button" mdbBtn color="dark"
                 mdbWavesEffect size="xs" style="padding: 0; height: 35px; width: 35px;"
-                (click)="addAssoc(cartRow.assoc)"
-                [disabled]="cartRow.nbCart < 2">
+                (click)="addAssoc(cartRow.assoc)">
           +
         </button>
         </div>
@@ -59,8 +58,7 @@
           {{ cartRow.nbCart }}
           <button type="button" mdbBtn color="dark"
                   mdbWavesEffect size="xs" style="padding: 0; height: 35px; width: 35px;"
-                  (click)="addMenu(cartRow.menu)"
-                  [disabled]="cartRow.nbCart < 2">
+                  (click)="addMenu(cartRow.menu)">
             +
           </button>
         </div>

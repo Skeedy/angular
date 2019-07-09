@@ -41,7 +41,9 @@
           </mat-error>
         </mat-form-field>
 
-        <button (click)="commander()"
+        <button type="button" mdbBtn color="success"
+                mdbWavesEffect
+                (click)="commander()"
                 [disabled]="hourForm.invalid || !isConnected()">Commander</button>
       </form>
     </div>

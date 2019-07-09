@@ -54,7 +54,7 @@ export class PanierComponent implements OnInit {
   private commander() {
     this.cartServ.addTime(this.hour);
     console.log(this.hour);
-    this.cartServ.commander({cartrows: this.rows}).subscribe((data) => {
+    this.cartServ.commander({cartrows: this.rows, requestedHour: this.hour }).subscribe((data) => {
       console.log('Commande envoyée !');
     }, (err) => {
       console.log(err);

@@ -2,6 +2,11 @@ header {
   width: 100%;
 }
 
+.product__list{
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .product {
   width: 100px;
   height: 100px;
@@ -30,7 +35,7 @@ header {
 
 .card__product {
   margin-right: 25px;
-  width: 200px;
+  width: auto;
 
   &:hover .product__img {
     transition: all .2s ease-in-out;
@@ -46,7 +51,8 @@ header {
 }
 
 .product__img {
-  width: 200px;
+  width: fit-content;
+  margin: auto;
 
 }
 
@@ -73,4 +79,7 @@ header {
 
 .type__name {
   width: 100%;
+}
+.view{
+  overflow: unset;
 }
