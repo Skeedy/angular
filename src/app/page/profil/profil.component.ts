@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
+import { AuthService } from '../../service/auth.service';
 import { User } from '../../class/user';
-import {AuthService} from '../../service/auth.service';
+import { BasicFormComponent } from '../../component/basic-form/basic-form.component';
 
 @Component({
   selector: 'app-profil',
@@ -9,9 +10,12 @@ import {AuthService} from '../../service/auth.service';
 })
 export class ProfilComponent implements OnInit {
 
-  constructor() { }
+  private user: User;
+  @Input() showModal = false;
+
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
-
+    this.user = this.auth.currentUser;
   }
 }

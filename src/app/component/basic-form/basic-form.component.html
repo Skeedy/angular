@@ -1,13 +1,16 @@
-<div class="container-fluid">
-    <div fxLayout="row" fxLayoutAlign="center center" style="height: calc(100vh - 64px);">
-        <mat-card class="col-12 col-sm-8 col-md-6 col-lg-4">
+<div *ngIf="visible" class="container-fluid">
+    <div fxLayout="row" class="d-flex justify-content-center basic-form">
+        <mat-card class="w100">
             <ngb-alert type="danger" *ngIf="submitFailed" (close)="submitFailed = false">
-                Une erreur est survenue !
+                Une erreur est survenue.
             </ngb-alert>
+            <button class="basic-close-btn btn btn-outline-danger" (click)="close()">
+                X
+            </button>
             <mat-spinner *ngIf="loading" [diameter]="20"></mat-spinner>
             <mat-card-title class="text-center">Profile</mat-card-title>
             <mat-card-content>
-                <form class="form-content" [formGroup]="userForm">
+                <form class="d-flex flex-column justify-content-center align-items-center form-content" [formGroup]="userForm">
                     <mat-form-field>
                         <input matInput
                                placeholder="Prénom"
@@ -40,12 +43,16 @@
                                formControlName="password"/>
                     </mat-form-field>
                 </form>
-                <button class="mt-3 btn btn-outline-danger" mat-flat-button
-                        [disabled]="loading || userForm.invalid"
-                        (click)="saveProfile()"
-                        color="primary">
-                    <span>Enregistrer</span>
-                </button>
+                <div class="w-100" style="text-align: center;">
+                    <button *ngIf="visible" class="mt-3 btn btn-outline-danger"
+                            name="modif"
+                            mat-flat-button
+                            [disabled]="loading || userForm.invalid"
+                            (click)="saveProfile()"
+                            color="primary">
+                        <span>Enregistrer</span>
+                    </button>
+                </div>
             </mat-card-content>
         </mat-card>
     </div>
