@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { AuthService } from '../../service/auth.service';
 import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
 import { User } from '../../class/user';
@@ -14,6 +14,9 @@ export class BasicFormComponent implements OnInit {
   private submitFailed: boolean;
   public userForm: FormGroup;
   private user: User;
+
+  @Input() visible: boolean;
+  @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor(private fb: FormBuilder, private auth: AuthService) { }
 
@@ -47,6 +50,13 @@ export class BasicFormComponent implements OnInit {
         this.submitFailed = true;
         this.loading = false;
       });
+    this.visible = false;
+    this.visibleChange.emit(this.visible);
+  }
+
+  close() {
+    this.visible = false;
+    this.visibleChange.emit(this.visible);
   }
 
   profilUser() {
