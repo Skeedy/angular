@@ -14,6 +14,10 @@
 
     </div>
   </div>
+<!--  <span *ngIf="timer; else test">-->
+<!--    Vous devez attendre un moment pour repasser une commande !-->
+<!--  </span>-->
+<!--  <ng-template #test>-->
   <app-cart-row *ngFor="let row of rows" [cartRow]="row"></app-cart-row>
   <div class="d-flex justify-content-end mr-5">
       <span style="margin-right: 80px;">
@@ -48,7 +52,7 @@
       </form>
     </div>
   </div>
-
+<!--  </ng-template>-->
 </div>
 
 

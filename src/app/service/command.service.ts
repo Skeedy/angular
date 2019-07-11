@@ -18,6 +18,7 @@ export class CommandService {
   public getCommands(id: User) {
     return this.http.get(`${this.uri}user/${id}/commands`);
   }
+
   deleteCommand(id: number) {
     return this.http.delete(`${this.uri}/delete/${id}`);
   }

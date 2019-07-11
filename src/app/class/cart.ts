@@ -4,6 +4,7 @@ import {Price} from './price';
 import {CartRow} from './cart-row';
 import {TypePrice} from './type-price';
 import {Time} from './time';
+import {Command} from "./command";
 
 
 export class Cart {
