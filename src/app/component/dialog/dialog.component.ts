@@ -19,6 +19,15 @@ import {Type} from '../../class/type';
       transition('* => void', [
         animate(100, style({ transform: 'scale3d(.0, .0, .0)' }))
       ])
+    ]),
+    trigger('allergens', [
+      transition('void => *', [
+        style({ transform: 'scale3d(.3, .3, .3)' }),
+        animate(100)
+      ]),
+      transition('* => void', [
+        animate(100, style({ transform: 'scale3d(.0, .0, .0)' }))
+      ])
     ])
   ]
 })
@@ -32,7 +41,9 @@ export class DialogComponent implements OnInit {
 
   constructor(private cartServ: CartService) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    console.log(this.assoc);
+  }
 
   close() {
     this.visible = false;

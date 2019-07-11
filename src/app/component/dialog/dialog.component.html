@@ -1,4 +1,4 @@
-<div [@dialog] *ngIf="visible" class="dialog">
+<div [@dialog] [@allergens] *ngIf="visible" class="dialog">
   <div class="dialog-headband"></div>
   <div class="dialog-container">
     <div>
@@ -9,16 +9,14 @@
                style="width: 100px; height: 100px;">
         </figure>
         <div>
-          <button (click)="remove()" [disabled]="cartRow.nbCart < 2"> - </button>
-          {{ cartRow.nbCart }}
-          <button (click)="add()"> + </button>
+
         </div>
       </div>
       <div class="dialog-allergens">
         <p>Allergènes</p>
-          <figure *ngIf="assoc?.allergens?.image">
-            <img
-               src="{{ assoc?.allergens?.image?.imgpath |imgpath }}"
+          <figure >
+            <img *ngFor="let allergen of assoc.allergens"
+               src="{{ allergen.image.imgpath |imgpath }}"
                alt="logo de produits japonais"
                        style="width: 100px; height: 100px;">
           </figure>
