@@ -48,13 +48,13 @@ export class CartRowComponent implements OnInit {
   private calculPrice() {
     if (this.cartRow.assoc) {
       const price = this.cartRow.assoc.prices.find((price) => {
-        return price.type.value === TypePrice.STANDARD;
+        return price.type.value === TypePrice.Standard;
       });
       this.cartRow.priceAssoc = price.value;
     }
     if (this.cartRow.menu) {
       const price = this.cartRow.menu.prices.find((price) => {
-        return price.type.value === TypePrice.STANDARD;
+        return price.type.value === TypePrice.Standard;
       });
       this.cartRow.priceMenu = price.value;
     }

@@ -15,6 +15,6 @@ export class Assoc {
     image: Image;
     isDish: boolean;
     price: string;
-    allergens: Allergen;
+    allergens: Allergen[];
     forMenu: boolean;
 }

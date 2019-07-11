@@ -11,8 +11,8 @@
                 <mat-icon class="phone-icon">phone_android</mat-icon>
                 <span class="ojbento__phone">05.56.69.92.42 </span>
             </div>
-            <div *ngIf="isConnected()">
-            <span>
+            <div  *ngIf="isConnected()">
+            <span class="d-flex flex-column align-items-center">
                 - Bonjour {{user.fname}} {{user.lname}} -
                 <button mat-button (click)="logout()">
                     <span >Déconnexion</span>
@@ -51,6 +51,10 @@
         <mat-toolbar>
             <span>
                 <a routerLink="/home" routerLinkActive="active" mat-list-item>Présentation</a>
+            </span>
+            <span class="pl-3">
+                <a routerLink="/profil" routerLinkActive="active" mat-list-item>Profil
+                </a>
             </span>
             <span *ngIf="screenWidth < 900">
                 <button  type="button" mat-button (click)="sidenav.toggle()">
