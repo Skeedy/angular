@@ -77,6 +77,7 @@ export class AuthService {
           }
           return user;
         }));
+
   }
 
   public register(data) {

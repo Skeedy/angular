@@ -14,6 +14,10 @@
 
     </div>
   </div>
+<!--  <span *ngIf="timer; else test">-->
+<!--    Vous devez attendre un moment pour repasser une commande !-->
+<!--  </span>-->
+<!--  <ng-template #test>-->
   <app-cart-row *ngFor="let row of rows" [cartRow]="row"></app-cart-row>
   <div class="d-flex justify-content-end mr-5">
       <span style="margin-right: 80px;">
@@ -44,11 +48,14 @@
         <button type="button" mdbBtn color="success"
                 mdbWavesEffect
                 (click)="commander()"
-                [disabled]="hourForm.invalid || !isConnected()">Commander</button>
+                [disabled]="hourForm.invalid || !isConnected() || commandCheck">Commander</button>
       </form>
+      <span *ngIf="commandCheck">
+        Vous avez déjà une commande en cours de validation. Veuillez patienter que votre commande sois traitée pour recommander de nouveau
+      </span>
     </div>
   </div>
-
+<!--  </ng-template>-->
 </div>
 
 
