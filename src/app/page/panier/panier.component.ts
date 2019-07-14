@@ -8,6 +8,8 @@ import {AuthService} from "../../service/auth.service";
 import {User} from "../../class/user";
 import { State } from "../../class/state";
 import {Command} from "../../class/command";
+import {Router} from '@angular/router';
+import {Globals} from "../../globals";
 
 
 @Component({
@@ -29,9 +31,11 @@ export class PanierComponent implements OnInit {
               private timeServ: TimeService,
               private auth: AuthService,
               private fb: FormBuilder,
+              private router: Router
               ) { }
 
   ngOnInit() {
+    this.refreshProfil();
     const cart = this.cartServ.getCart();
     this.rows = cart.getList();
     this.getTime();
@@ -61,15 +65,19 @@ export class PanierComponent implements OnInit {
       return command.state.value === 1;
     });
   }
-
+  private refreshProfil() {
+    localStorage.removeItem('user-cart');
+    localStorage.removeItem(Globals.APP_USER);
+    this.auth.profile().subscribe();
+  }
   private commander() {
     this.cartServ.addTime(this.hour);
-    console.log(this.cartServ.cart.getPrice());
+
     this.cartServ.commander({cartrows: this.rows, requestedHour: this.hour, price : this.cartServ.cart.getPrice() }).subscribe((data) => {
       console.log('Commande envoyée !');
       localStorage.removeItem('user-cart');
-    }, (err) => {
-      console.log(err);
-    });
+      this.refreshProfil();
+      location.reload();
+          });
   }
 }

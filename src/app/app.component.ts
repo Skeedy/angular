@@ -6,6 +6,8 @@ import { User } from './class/user';
 import { Type } from './class/type';
 import {CartService} from './service/cart.service';
 import {Cart} from './class/cart';
+import {Globals} from "./globals";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -23,7 +25,8 @@ export class AppComponent implements OnInit {
   constructor(private titleService: TitleService,
               private auth: AuthService,
               private cartServ: CartService,
-              private type: TypeService) {
+              private type: TypeService,
+              private router: Router) {
     this.screenWidth = window.innerWidth;
     window.onresize = () => {
       this.screenWidth = window.innerWidth;
@@ -47,6 +50,13 @@ export class AppComponent implements OnInit {
     this.type.getTypes().subscribe(data => {
       this.types = data;
     });
+  }
+  public refreshProfil() {
+    localStorage.removeItem(Globals.APP_USER);
+    this.auth.profile().subscribe(
+        (user) => {
+          this.router.navigate(['/product']);
+        });
   }
 
 }

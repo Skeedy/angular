@@ -38,6 +38,7 @@ export class AuthService {
           return data;
         }));
   }
+
   public get tokenData() {
     return JSON.parse(localStorage.getItem(Globals.APP_USER_TOKEN));
   }
@@ -60,6 +61,7 @@ export class AuthService {
           }
           return user;
         }));
+
   }
   public register(data) {
     const obj = {

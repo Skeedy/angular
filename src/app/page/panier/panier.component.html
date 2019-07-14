@@ -48,8 +48,11 @@
         <button type="button" mdbBtn color="success"
                 mdbWavesEffect
                 (click)="commander()"
-                [disabled]="hourForm.invalid || !isConnected()">Commander</button>
+                [disabled]="hourForm.invalid || !isConnected() || commandCheck">Commander</button>
       </form>
+      <span *ngIf="commandCheck">
+        Vous avez déjà une commande en cours de validation. Veuillez patienter que votre commande sois traitée pour recommander de nouveau
+      </span>
     </div>
   </div>
 <!--  </ng-template>-->
