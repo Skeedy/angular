@@ -34,6 +34,7 @@ import { ProfilComponent } from './page/profil/profil.component';
 import { BasicFormComponent } from './component/basic-form/basic-form.component';
 import { CommandSuccessComponent } from './page/command-success/command-success.component';
 import { CommandsComponent } from './component/commands/commands.component';
+import { NoMenuPipe } from './pipe/no-menu.pipe';
 
 const appRoutes: Routes = [
     { path: 'product', component: ProductComponent, data : { title: 'Produits'} },
@@ -70,7 +71,8 @@ const appRoutes: Routes = [
         ProfilComponent,
         BasicFormComponent,
         CommandSuccessComponent,
-        CommandsComponent
+        CommandsComponent,
+        NoMenuPipe
     ],
     imports: [
         MDBBootstrapModule,

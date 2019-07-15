@@ -4,10 +4,11 @@
             <h2 id="{{ type.name }}" class="m-5 text-center">{{ type.name }}</h2>
         </div>
         <div class="container-fluid justify-content-around d-flex align-items-center flex-wrap">
-            <div *ngFor="let assoc of type.assocs">
+            <div *ngFor="let assoc of type.assocs | noMenu ">
 
-                <app-product-card [type]="type" [assoc]="assoc"></app-product-card>
-                </div>
+                <app-product-card [type]="type" [assoc]="assoc" ></app-product-card>
+
+            </div>
         </div>
     </div>
 </div>

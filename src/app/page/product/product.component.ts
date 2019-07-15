@@ -32,8 +32,9 @@ export class ProductComponent implements OnInit {
 
   getAssocs() {
     this.typeService.getAssocsByType()
-      .subscribe((data) => {
+      .subscribe((data: any) => {
         this.assocByTypes = data;
+
       });
   }
 
