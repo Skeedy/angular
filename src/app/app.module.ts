@@ -35,9 +35,15 @@ import { BasicFormComponent } from './component/basic-form/basic-form.component'
 import { CommandSuccessComponent } from './page/command-success/command-success.component';
 import { CommandsComponent } from './component/commands/commands.component';
 import { NoMenuPipe } from './pipe/no-menu.pipe';
+import { CookieService } from 'ngx-cookie-service';
+import { CookieComponent } from './component/cookie/cookie.component';
+import { PolitiqueComponent } from './page/politique/politique.component';
+import { FooterComponent } from './component/footer/footer.component';
 
 const appRoutes: Routes = [
     { path: 'product', component: ProductComponent, data : { title: 'Produits'} },
+    { path: 'politique', component: PolitiqueComponent, data : { title: 'Politique de' +
+              ' confidentialité'} },
     { path: 'profil', component: ProfilComponent, data : { title: 'Profil'} },
     { path: 'home', component: HomeComponent, data : { title: 'Page d\'acceuil'} },
     { path: 'menu', component: MenuComponent, data : { title: 'Menu'} },
@@ -72,7 +78,10 @@ const appRoutes: Routes = [
         BasicFormComponent,
         CommandSuccessComponent,
         CommandsComponent,
-        NoMenuPipe
+        NoMenuPipe,
+        CookieComponent,
+        PolitiqueComponent,
+        FooterComponent
     ],
     imports: [
         MDBBootstrapModule,
@@ -106,6 +115,7 @@ const appRoutes: Routes = [
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
+        CookieService
     ],
     bootstrap: [AppComponent]
 })
