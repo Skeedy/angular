@@ -10,7 +10,7 @@ import {  MatToolbarModule, MatSidenavModule,
     MatInputModule, MatProgressSpinnerModule, MatTableModule,
     MatSelectModule, MatAutocompleteModule,
     MatCheckboxModule, MatButtonModule, MatIconModule,
-    MatRadioModule, MatChipsModule} from '@angular/material';
+    MatRadioModule, MatChipsModule, MatTabsModule} from '@angular/material';
 import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProductComponent } from './page/product/product.component';
@@ -33,6 +33,7 @@ import { HomeComponent } from './page/home/home.component';
 import { ProfilComponent } from './page/profil/profil.component';
 import { BasicFormComponent } from './component/basic-form/basic-form.component';
 import { CommandSuccessComponent } from './page/command-success/command-success.component';
+import { CommandsComponent } from './component/commands/commands.component';
 
 const appRoutes: Routes = [
     { path: 'product', component: ProductComponent, data : { title: 'Produits'} },
@@ -68,7 +69,8 @@ const appRoutes: Routes = [
         HomeComponent,
         ProfilComponent,
         BasicFormComponent,
-        CommandSuccessComponent
+        CommandSuccessComponent,
+        CommandsComponent
     ],
     imports: [
         MDBBootstrapModule,
@@ -80,6 +82,7 @@ const appRoutes: Routes = [
         MatCardModule,
         MatMenuModule,
         MatTableModule,
+        MatTabsModule,
         MatProgressSpinnerModule,
         MatAutocompleteModule,
         FormsModule,

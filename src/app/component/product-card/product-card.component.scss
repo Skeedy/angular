@@ -33,8 +33,18 @@ header {
   }
 }
 
+mat-card{
+  background: #656565;
+
+}
+mat-card-title{
+  color: white;
+}
+
+mat-card-subtitle{
+  color: white;
+}
 .card__product {
-  margin-right: 25px;
   width: auto;
 
   &:hover .product__img {
@@ -54,9 +64,12 @@ header {
   width: 300px;
   height: 300px;
   margin: auto;
+  padding: 14px;
 
 }
-
+.quantity {
+  color: white;
+}
 .story__caption {
   position: absolute;
   top: 50%;

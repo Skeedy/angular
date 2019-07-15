@@ -7,8 +7,9 @@ export class Command {
     id: number;
     user: User;
     commandassocs: CommandAssoc[];
-    commandMenus: CommandMenu[];
+    commandmenus: CommandMenu[];
     state: State;
-    price: number;
+    totalPrice: string;
+    datetime: string;
 
 }
