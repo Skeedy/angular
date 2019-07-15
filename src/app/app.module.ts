@@ -32,6 +32,7 @@ import {DialogComponent} from './component/dialog/dialog.component';
 import { HomeComponent } from './page/home/home.component';
 import { ProfilComponent } from './page/profil/profil.component';
 import { BasicFormComponent } from './component/basic-form/basic-form.component';
+import { CommandSuccessComponent } from './page/command-success/command-success.component';
 
 const appRoutes: Routes = [
     { path: 'product', component: ProductComponent, data : { title: 'Produits'} },
@@ -39,7 +40,8 @@ const appRoutes: Routes = [
     { path: 'home', component: HomeComponent, data : { title: 'Page d\'acceuil'} },
     { path: 'menu', component: MenuComponent, data : { title: 'Menu'} },
     { path: 'type', component: TypeComponent, data : { title: 'Type'} },
-    { path: 'command', component: CommandComponent, canActivate: [IsSignedInGuard], data : { title: 'Historique'} },
+    { path: 'command', component: CommandComponent, canActivate: [IsSignedInGuard], data : { title: 'Commande envoyée'} },
+    { path: 'command_success', component: CommandSuccessComponent, canActivate: [IsSignedInGuard], data : { title: 'Historique'} },
     { path: 'panier', component: PanierComponent, data : { title: 'Panier'} },
     { path: 'login', component: LoginComponent, data : { title: 'Login'} },
     { path: 'register', component: RegisterComponent, data : { title: 'Register'} },
@@ -65,7 +67,8 @@ const appRoutes: Routes = [
         DialogComponent,
         HomeComponent,
         ProfilComponent,
-        BasicFormComponent
+        BasicFormComponent,
+        CommandSuccessComponent
     ],
     imports: [
         MDBBootstrapModule,

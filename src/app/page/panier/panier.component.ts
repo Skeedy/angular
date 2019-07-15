@@ -35,7 +35,6 @@ export class PanierComponent implements OnInit {
               ) { }
 
   ngOnInit() {
-    this.refreshProfil();
     const cart = this.cartServ.getCart();
     this.rows = cart.getList();
     this.getTime();
@@ -65,19 +64,11 @@ export class PanierComponent implements OnInit {
       return command.state.value === 1;
     });
   }
-  private refreshProfil() {
-    localStorage.removeItem('user-cart');
-    localStorage.removeItem(Globals.APP_USER);
-    this.auth.profile().subscribe();
-  }
   private commander() {
     this.cartServ.addTime(this.hour);
-
     this.cartServ.commander({cartrows: this.rows, requestedHour: this.hour, price : this.cartServ.cart.getPrice() }).subscribe((data) => {
-      console.log('Commande envoyée !');
+      this.router.navigate(['/command_success']);
       localStorage.removeItem('user-cart');
-      this.refreshProfil();
-      location.reload();
           });
   }
 }
