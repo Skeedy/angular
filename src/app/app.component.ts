@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   user: User|null;
   types: Type[];
   cart: Cart;
-
+  test: boolean;
   constructor(private titleService: TitleService,
               private auth: AuthService,
               private cartServ: CartService,
@@ -36,6 +36,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.titleService.init();
     this.getTypes();
+    this.test = !!localStorage.getItem(Globals.APP_CART);
 
   }
 

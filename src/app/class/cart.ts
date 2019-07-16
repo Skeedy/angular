@@ -24,7 +24,9 @@ export class Cart {
     addMenu(menu: Menu) {
         this.addElement(CartRow.MENU, menu);
     }
-
+    resetCart() {
+        this.cartRows = [];
+    }
     addAssoc(assoc: Assoc) {
         this.addElement(CartRow.ASSOC, assoc);
     }
