@@ -12,7 +12,6 @@ import { Time } from "../class/time";
 export class CartService {
 
   private uri = Globals.APP_API + 'command/new';
-
   public cart: Cart;
   constructor(private http: HttpClient) {
     this.cart = new Cart();
@@ -39,7 +38,9 @@ export class CartService {
     this.cart.addAssoc(assoc);
     this.storageCart();
   }
-
+  resetCart() {
+    this.cart.resetCart();
+  }
   addMenu(menu: Menu) {
     this.cart.addMenu(menu);
     this.storageCart();
@@ -53,6 +54,7 @@ export class CartService {
     this.cart.removeMenu(menu);
     this.storageCart();
   }
+
   private storageCart() {
     localStorage.setItem(Globals.APP_CART, JSON.stringify(this.cart));
   }

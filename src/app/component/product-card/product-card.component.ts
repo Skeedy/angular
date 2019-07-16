@@ -49,7 +49,7 @@ export class ProductCardComponent implements OnInit {
   }
 
   getQuantity(assoc: Assoc) {
-    return this.cartServ.getAssocQuantity(assoc);
+      return this.cartServ.getAssocQuantity(assoc);
   }
 
   disabled(assoc: Assoc) {

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../service/auth.service';
 import {Globals} from '../../globals';
+import {Cart} from '../../class/cart';
+import {CartService} from '../../service/cart.service';
 
 @Component({
   selector: 'app-command-success',
@@ -9,10 +11,12 @@ import {Globals} from '../../globals';
 })
 export class CommandSuccessComponent implements OnInit {
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService,
+              private cartServ: CartService) { }
 
   ngOnInit() {
     this.refreshProfil();
+    this.cartServ.resetCart();
   }
   private refreshProfil() {
     localStorage.removeItem('user-cart');
