@@ -6,8 +6,9 @@ import { User } from './class/user';
 import { Type } from './class/type';
 import {CartService} from './service/cart.service';
 import {Cart} from './class/cart';
-import {Globals} from "./globals";
-import { Router } from "@angular/router";
+import {Globals} from './globals';
+import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ import { Router } from "@angular/router";
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+  cookieValue = 'UNKNOWN';
   title = 'Restaurant';
   screenWidth: number;
   opened = false;
@@ -23,6 +25,7 @@ export class AppComponent implements OnInit {
   cart: Cart;
   test: boolean;
   constructor(private titleService: TitleService,
+              private cookieService: CookieService,
               private auth: AuthService,
               private cartServ: CartService,
               private type: TypeService,
@@ -34,6 +37,8 @@ export class AppComponent implements OnInit {
     this.cart = this.cartServ.cart;
   }
   ngOnInit(): void {
+    this.cookieService.set( 'Test', 'Hello World' );
+    this.cookieValue = this.cookieService.get('Test');
     this.titleService.init();
     this.getTypes();
     this.test = !!localStorage.getItem(Globals.APP_CART);
