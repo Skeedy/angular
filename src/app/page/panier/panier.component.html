@@ -31,17 +31,18 @@
       </div>
       <mat-radio-group
               aria-label="Pour quel moment ?"
-              [(ngModel)]="moment">
-        <mat-radio-button value="true">Midi</mat-radio-button>
-        <mat-radio-button value="false">Soirée</mat-radio-button>
+              [(ngModel)]="moment"
+      (change)="switchTime()">
+        <mat-radio-button value="midi">Midi</mat-radio-button>
+        <mat-radio-button value="soir">Soirée</mat-radio-button>
       </mat-radio-group>
       <form class="form-content" [formGroup]="hourForm">
 
         <mat-form-field *ngIf="moment">
           <mat-label>Horaire</mat-label>
 
-          <mat-select formControlName="horaire"  *ngIf="moment" [(ngModel)]="hour" required>
-            <mat-option *ngFor="let time of times | midiTime"
+          <mat-select formControlName="horaire"   [(ngModel)]="hour" required>
+            <mat-option *ngFor="let time of timeSelected"
                         [value]="time">
               {{time.hourCommand}}
             </mat-option>

@@ -10,6 +10,8 @@ import { State } from "../../class/state";
 import {Command} from "../../class/command";
 import {Router} from '@angular/router';
 import {Globals} from "../../globals";
+import { MidiTimePipe } from '../../pipe/midi-time.pipe';
+import { EveningTimePipe } from '../../pipe/evening-time.pipe';
 
 
 @Component({
@@ -22,11 +24,11 @@ export class PanierComponent implements OnInit {
   private times: Time[];
   private hour: Time;
   midiTime: any;
-  eveningTime: any;
+  timeSelected: any;
   user: User;
   loged: boolean;
   commandCheck: boolean;
-  moment: boolean;
+  moment: string;
   selectFormControl = new FormControl('', Validators.required);
   private hourForm: FormGroup;
   constructor(private cartServ: CartService,
@@ -51,7 +53,19 @@ export class PanierComponent implements OnInit {
     this.user = this.auth.currentUser;
     return this.auth.isConnected();
   }
-
+  switchTime() {
+    if (this.moment === 'midi') {
+      this.timeSelected = this.times.filter((time: Time) => {
+        return time.midi;
+      });
+    }
+    if (this.moment === 'soir') {
+      this.timeSelected = this.times.filter((time: Time) => {
+        return !time.midi;
+      });
+    }
+    console.log(this.timeSelected);
+  }
   checklogin() {
     this.loged = this.isConnected();
     return this.loged;
