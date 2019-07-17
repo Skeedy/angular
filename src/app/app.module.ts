@@ -39,6 +39,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { CookieComponent } from './component/cookie/cookie.component';
 import { PolitiqueComponent } from './page/politique/politique.component';
 import { FooterComponent } from './component/footer/footer.component';
+import { MidiTimePipe } from './pipe/midi-time.pipe';
+import { EveningTimePipe } from './pipe/evening-time.pipe';
 
 const appRoutes: Routes = [
     { path: 'product', component: ProductComponent, data : { title: 'Produits'} },
@@ -81,7 +83,9 @@ const appRoutes: Routes = [
         NoMenuPipe,
         CookieComponent,
         PolitiqueComponent,
-        FooterComponent
+        FooterComponent,
+        MidiTimePipe,
+        EveningTimePipe
     ],
     imports: [
         MDBBootstrapModule,
