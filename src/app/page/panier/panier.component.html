@@ -23,18 +23,22 @@
       </strong>
     </div>
   </div>
-  <div class="row">
-    <div>
+  <div *ngIf="commandCheck" class="text-danger text-center w-100">
+    Vous avez déjà une commande en cours de validation. Veuillez patienter que votre commande soit traitée pour recommander de nouveau
+  </div>
 
-      <div *ngIf="commandCheck">
-        Vous avez déjà une commande en cours de validation. Veuillez patienter que votre commande sois traitée pour recommander de nouveau
-      </div>
+
+
+  <div class="row">
+    <div class="col-6 d-flex flex-column align-items-end">
+      <label class="mr-3">Pour quel moment ?</label>
       <mat-radio-group
+
               aria-label="Pour quel moment ?"
               [(ngModel)]="moment"
-      (change)="switchTime()">
-        <mat-radio-button value="midi">Midi</mat-radio-button>
-        <mat-radio-button value="soir">Soirée</mat-radio-button>
+              (change)="switchTime()">
+        <mat-radio-button class="m-3" value="midi">Midi</mat-radio-button>
+        <mat-radio-button class="m-3" value="soir">Soirée</mat-radio-button>
       </mat-radio-group>
       <form class="form-content" [formGroup]="hourForm">
 
@@ -52,16 +56,18 @@
             Ce champ est requis
           </mat-error>
         </mat-form-field>
-        <button type="button" mdbBtn color="success"
-                mdbWavesEffect
-                (click)="commander()"
-                [disabled]="hourForm.invalid || !isConnected() || commandCheck">Commander</button>
       </form>
-    </div>
 
+    </div>
+    <div class="col-6">
+    <button class=""
+            type="button" mdbBtn color="success"
+            mdbWavesEffect
+            (click)="commander()"
+            [disabled]="hourForm.invalid || !isConnected() || commandCheck">Commander</button>
+    </div>
   </div>
-</div>
-<!--  </ng-template>-->
+
 
 
 

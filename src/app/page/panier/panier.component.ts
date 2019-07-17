@@ -64,7 +64,6 @@ export class PanierComponent implements OnInit {
         return !time.midi;
       });
     }
-    console.log(this.timeSelected);
   }
   checklogin() {
     this.loged = this.isConnected();
