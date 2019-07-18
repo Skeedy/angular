@@ -6,7 +6,7 @@
          (click)="showDialog = !showDialog">
     <mat-card-content>
         <mat-card-title class="text-center">
-            {{ assoc.quantity }} {{ type.name }}s {{assoc.product.name}}
+            {{ assoc.quantity }} <span *ngIf="type.name !== 'Accompagnement' && type.name !=='Dessert' && type.name !== 'Plats chauds'">{{ type.name }}s </span>{{assoc.product.name}}
         </mat-card-title>
         <mat-card-subtitle class="text-center mb-2">
             {{ getPrice(assoc, 'Standard') }} €
