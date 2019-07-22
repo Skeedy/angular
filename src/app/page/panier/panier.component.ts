@@ -73,7 +73,9 @@ export class PanierComponent implements OnInit {
     return this.loged;
   }
   checkMenuMidi() {
-    this.test = this.rows.some( (cartrows: CartRow) => {
+    this.test = this.rows.filter((cartrows: CartRow) => {
+      return cartrows.menu;
+    }).some( (cartrows: CartRow) => {
       return cartrows.menu.isMidi;
     });
     if (this.test && this.moment === 'soir') {
