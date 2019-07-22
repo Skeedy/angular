@@ -29,6 +29,7 @@ export class PanierComponent implements OnInit {
   loged: boolean;
   commandCheck: boolean;
   moment: string;
+  test = [1, 4];
   selectFormControl = new FormControl('', Validators.required);
   private hourForm: FormGroup;
   constructor(private cartServ: CartService,
@@ -78,7 +79,7 @@ export class PanierComponent implements OnInit {
     this.commandCheck = this.user.commands.filter( (command: Command) => {
       return command.state.value;
     }).some((command: Command) => {
-      return command.state.value === 1;
+      return command.state.value <= 2;
     });
   }
   private commander() {
