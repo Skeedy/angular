@@ -23,7 +23,6 @@ export class AppComponent implements OnInit {
   user: User|null;
   types: Type[];
   cart: Cart;
-  test: boolean;
   constructor(private titleService: TitleService,
               private cookieService: CookieService,
               private auth: AuthService,
@@ -41,7 +40,6 @@ export class AppComponent implements OnInit {
     this.cookieValue = this.cookieService.get('Test');
     this.titleService.init();
     this.getTypes();
-    this.test = !!localStorage.getItem(Globals.APP_CART);
 
   }
 

@@ -13,7 +13,7 @@ import {User} from '../../class/user';
 export class LoginComponent implements OnInit {
     public loginForm: FormGroup;
     public connexionFailed: boolean;
-
+    public loading: boolean;
     constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {
         if (this.auth.isConnected()) {
             this.router.navigate(['product']);
@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
 
     login() {
         this.connexionFailed = false;
+        this.loading = true;
         const val = this.loginForm.value;
         if (val.username && val.password) {
             this.auth.login(val.username, val.password)
@@ -38,15 +39,18 @@ export class LoginComponent implements OnInit {
                             .subscribe(
                                 (user) => {
                                     this.router.navigate(['/product']);
+                                    this.loading = false;
                                 },
                                 (err) => {
                                     console.log(err);
                                     this.connexionFailed = true;
+                                    this.loading = false;
                                 });
                     },
                     (err) => {
                         console.log(err);
                         this.connexionFailed = true;
+                        this.loading = false;
                     } );
         }
     }

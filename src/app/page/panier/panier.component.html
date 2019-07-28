@@ -45,7 +45,7 @@
         <mat-form-field *ngIf="moment">
           <mat-label>Horaire</mat-label>
 
-          <mat-select formControlName="horaire"   [(ngModel)]="hour" required>
+          <mat-select formControlName="horaire" [(ngModel)]="hour" required>
             <mat-option *ngFor="let time of timeSelected"
                         [value]="time">
               {{time.hourCommand}}
@@ -60,12 +60,17 @@
 
     </div>
     <div class="col-6">
-    <button class=""
-            type="button" mdbBtn color="success"
-            mdbWavesEffect
-            (click)="commander()"
-            [disabled]="hourForm.invalid || !isConnected() || commandCheck">Commander</button>
+      <mat-spinner *ngIf="loading" [diameter]="20"></mat-spinner>
+          <button class=""
+                  type="button" mdbBtn color="success"
+                  mdbWavesEffect
+                  (click)="commander()"
+                  [disabled]="hourForm.invalid || !isConnected() || commandCheck || checkMenuMidi() || loading">
+            Commander
+          </button>
+      <div *ngIf="checkMenuMidi()" class="text-danger"> Vous ne pouvez commander de formule du midi le soir </div>
     </div>
+
   </div>
 
 
