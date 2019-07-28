@@ -35,6 +35,7 @@ export class Cart {
         let cartRow = this.cartRows.filter((cR: CartRow) => {
             return cR[elementName];
         }).find((cR: CartRow) => {
+            console.log(cR[elementName].id === element.id);
             return cR[elementName].id === element.id;
         });
         if (cartRow) {

@@ -42,7 +42,6 @@ export class CartRowComponent implements OnInit {
     } else {
       this.cartServ.removeAssoc(this.cartRow.assoc);
     }
-
   }
 
   private calculPrice() {

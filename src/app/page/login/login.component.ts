@@ -9,6 +9,7 @@ import {User} from '../../class/user';
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
     public loginForm: FormGroup;
     public connexionFailed: boolean;
@@ -49,5 +50,4 @@ export class LoginComponent implements OnInit {
                     } );
         }
     }
-
 }

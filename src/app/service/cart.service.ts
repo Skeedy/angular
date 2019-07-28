@@ -4,7 +4,7 @@ import {Assoc} from '../class/assoc';
 import {Globals} from '../globals';
 import {Menu} from '../class/menu';
 import {HttpClient} from '@angular/common/http';
-import { Time } from "../class/time";
+import { Time } from '../class/time';
 
 @Injectable({
   providedIn: 'root'

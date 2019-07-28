@@ -28,7 +28,7 @@ import { CommandComponent } from './page/command/command.component';
 import { RegisterComponent } from './component/register/register.component';
 import { PanierComponent } from './page/panier/panier.component';
 import { CartRowComponent } from './component/cart-row/cart-row.component';
-import {DialogComponent} from './component/dialog/dialog.component';
+import { DialogComponent } from './component/dialog/dialog.component';
 import { HomeComponent } from './page/home/home.component';
 import { ProfilComponent } from './page/profil/profil.component';
 import { BasicFormComponent } from './component/basic-form/basic-form.component';
@@ -50,7 +50,7 @@ const appRoutes: Routes = [
     { path: 'home', component: HomeComponent, data : { title: 'Page d\'acceuil'} },
     { path: 'menu', component: MenuComponent, data : { title: 'Menu'} },
     { path: 'type', component: TypeComponent, data : { title: 'Type'} },
-    { path: 'command', component: CommandComponent, canActivate: [IsSignedInGuard], data : { title: 'Commande envoyée'} },
+    { path: 'command',  component: CommandComponent, canActivate: [IsSignedInGuard], data : { title: 'Commande envoyée'} },
     { path: 'command_success', component: CommandSuccessComponent, canActivate: [IsSignedInGuard], data : { title: 'Historique'} },
     { path: 'panier', component: PanierComponent, data : { title: 'Panier'} },
     { path: 'login', component: LoginComponent, data : { title: 'Login'} },

@@ -83,7 +83,7 @@ export class PanierComponent implements OnInit {
   }
   private commander() {
     this.cartServ.addTime(this.hour);
-    this.cartServ.commander({cartrows: this.rows, requestedHour: this.hour, price : this.cartServ.cart.getPrice() }).subscribe((data) => {
+    this.cartServ.commander({cartrows: this.rows, requestedHour:  this.hour, price : this.cartServ.cart.getPrice() }).subscribe((data) => {
       this.router.navigate(['/command_success']);
       localStorage.removeItem('user-cart');
           });

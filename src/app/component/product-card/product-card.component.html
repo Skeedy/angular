@@ -6,7 +6,7 @@
          (click)="showDialog = !showDialog">
     <mat-card-content>
         <mat-card-title class="text-center">
-            {{ assoc.quantity }} {{ type.name }}s {{assoc.product.name}}
+            {{ assoc.quantity }} {{ assoc.type.name }}s {{assoc.product.name}}
         </mat-card-title>
         <mat-card-subtitle class="text-center mb-2">
             {{ getPrice(assoc, 'Standard') }} €
@@ -25,7 +25,7 @@
             </button>
         </div>
     </mat-card-content>
-    <app-dialog [assoc]="assoc" [type]="type" [(visible)]="showDialog">-->
+    <app-dialog [assoc]="assoc" [type]="type" [(visible)]="showDialog">
         <button (click)="showDialog = !showDialog" class="btn">Close</button>
     </app-dialog>
 </mat-card>

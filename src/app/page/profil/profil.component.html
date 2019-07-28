@@ -1,11 +1,12 @@
-<section class="profil container-fluid d-flex flex-column">
+<section class="profil container-fluid d-flex flex-column justify-content-center">
+
   <mat-tab-group>
     <mat-tab label="Mes Coordonnées">
-
+  <div class="d-flex flex-column justify-content-center align-items-center">
   <header>
     <h2 class="text-center m-5">Mon profil</h2>
   </header>
-    <mat-card  class="col-8 mb-5">
+    <mat-card  class="mb-5 col-6">
       <mat-card-title class="text-center mb-3">Informations
         générales</mat-card-title>
       <div>
@@ -23,6 +24,7 @@
         </div>
       </div>
     </mat-card>
+  </div>
     <app-basic-form class="col-8 mb-5" [(visible)]="showModal">
       <button (click)="showModal = !showModal" class="btn btn-outline-danger basic-close-btn">
         x
