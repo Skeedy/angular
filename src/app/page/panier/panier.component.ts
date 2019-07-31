@@ -90,11 +90,13 @@ export class PanierComponent implements OnInit {
     });
   }
   checkCurrentCommand() {
-    this.commandCheck = this.user.commands.filter( (command: Command) => {
-      return command.state.value;
-    }).some((command: Command) => {
-      return command.state.value <= 2;
-    });
+    if (this.user && this.user.commands) {
+      this.commandCheck = this.user.commands.filter( (command: Command) => {
+        return command.state.value;
+      }).some((command: Command) => {
+        return command.state.value <= 2;
+      });
+    }
   }
   private commander() {
     this.loading = true;

@@ -2,18 +2,18 @@
   <div class="dialog-headband"></div>
   <div class="dialog-container ml-3">
     <div>
-      <h3 style="height: 15%;" class="text-center p-3">{{ assoc.type.name }}
-        {{ assoc.product.name }} |
-        <span>{{ assoc.quantity }} {{ assoc.price }} </span>
+      <h3 style="height: 15%;" class="text-center d-flex justify-content-center align-items-end">
+        <span>{{ assoc.type.name }} {{ assoc.product.name }} |</span>
+        <span>{{ assoc.quantity }} {{ assoc.price }}</span>
       </h3>
-      <div class="dialog-picture mb-3" style="height: 70%">
+      <div class="dialog-picture d-flex justify-content-center align-items-center mb-3" style="height: 70%">
         <figure>
           <img src="{{ assoc.image?.imgpath |imgpath }}" alt="logo de produits japonais"
-               style="width: 100px; height: 100px;">
+               style="width: 250px; height: 250px;">
         </figure>
       </div>
       <div class="dialog-allergens" style="height: 15%;">
-        <p>Allergènes</p>
+        <p style="font-weight: bold;">Allergènes</p>
         <figure>
           <img *ngFor="let allergen of assoc.allergens"
                src="{{ allergen.image.imgpath |imgpath }}"
@@ -22,16 +22,19 @@
         </figure>
       </div>
     </div>
-    <div>
+    <div class="d-flex flex-column justify-content-around">
       <div>
         <h3 class="text-center p-3">Composition</h3>
-      </div>
-      <div style="height: 50%;">
         <ul class="dialog-list">
-          <li>{{ assoc.composition }}</li>
-        </ul>
+            <li class="d-flex flex-column">
+              {{ assoc.composition }}
+            </li>
+          </ul>
       </div>
       <div style="height: 50%;">
+        <div>
+          <h3 class="text-center p-3">Description</h3>
+        </div>
         <p class="mr-3  text-center">
           {{ assoc.description }}
         </p>

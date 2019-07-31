@@ -13,11 +13,11 @@ export class BasicFormComponent implements OnInit {
   private loading: boolean;
   private submitFailed: boolean;
   public userForm: FormGroup;
-  private user: User;
 
+  @Output() private user: User;
   @Input() visible: boolean;
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() userEvent = new EventEmitter<User>();
+  @Output() newUser: EventEmitter<User> = new EventEmitter<User>();
 
   constructor(private fb: FormBuilder, private auth: AuthService) { }
 
@@ -43,7 +43,7 @@ export class BasicFormComponent implements OnInit {
           phone : user.phone,
           city : user.city,
         });
-        this.userEvent.emit(this.user);
+        this.newUser.emit(this.auth.currentUser);
       }, () => {
         this.submitFailed = true;
         this.loading = false;

@@ -49,6 +49,7 @@ export class AppComponent implements OnInit {
   }
   logout(): void {
     this.auth.logout();
+    this.router.navigate(['/login']);
   }
   getTypes() {
     this.type.getTypes().subscribe(data => {
