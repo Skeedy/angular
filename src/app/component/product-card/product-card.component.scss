@@ -35,10 +35,12 @@ header {
 
 mat-card{
   background: #656565;
-
 }
+
 mat-card-title{
   color: white;
+  min-height: 60px;
+  font-size: 18px;
 }
 
 mat-card-subtitle{
