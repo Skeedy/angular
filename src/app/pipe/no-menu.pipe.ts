@@ -8,9 +8,12 @@ export class NoMenuPipe implements PipeTransform {
 
   transform(value: Assoc[], args?: any): any {
 
-    return value.filter( (assoc: Assoc) => {
-      return !assoc.forMenu;
-    });
+    if (value) {
+      return value.filter( (assoc: Assoc) => {
+        return !assoc.forMenu;
+      });
+    }
+    return value;
   }
 
 }

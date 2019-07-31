@@ -1,12 +1,14 @@
+import { filter } from 'rxjs/operators';
 import {Component, OnInit} from '@angular/core';
 import {Globals} from '../../globals';
 import {HttpClient} from '@angular/common/http';
-import {Router} from '@angular/router';
+import { Router, ActivatedRoute, Scroll } from '@angular/router';
 import {Assoc} from '../../class/assoc';
 import {TypeService} from '../../service/type.service';
 import {AuthService} from '../../service/auth.service';
 import {User} from '../../class/user';
 import {CartService} from '../../service/cart.service';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-product',
@@ -28,6 +30,11 @@ export class ProductComponent implements OnInit {
     setTimeout(() => {
       this.getAssocs();
     }, 1000);
+    this.router.events.pipe(filter(element => element instanceof Scroll)).subscribe((element: any) => {
+      if (element.anchor && document.getElementById(element.anchor) ) {
+        document.getElementById(element.anchor).scrollIntoView({ behavior: "smooth" });
+      }
+    });
   }
 
   getAssocs() {

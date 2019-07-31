@@ -52,7 +52,7 @@
     </div>
   </div>
   <div class="item-3">
-    {{ cartRow.menu.name }}
+    {{ cartRow.menu.name }} <span *ngIf="cartRow.menu.isMidi">*midi</span>
   </div>
   <div class="item-4">
     <button type="button" mdbBtn color="danger"

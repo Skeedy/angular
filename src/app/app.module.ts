@@ -113,7 +113,11 @@ const appRoutes: Routes = [
         MatFormFieldModule,
         MatRadioModule,
         NgbModule,
-        RouterModule.forRoot(appRoutes),
+        RouterModule.forRoot(appRoutes, {
+          scrollPositionRestoration: 'enabled',
+          anchorScrolling: 'enabled',
+          onSameUrlNavigation: 'reload',
+          useHash: false }),
         MDBBootstrapModule.forRoot()
     ],
     providers: [

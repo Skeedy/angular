@@ -1,7 +1,7 @@
 <div class="row flex-column m-0">
-    <div class="d-flex flex-column justify-content-start" *ngFor="let type of assocByTypes">
+    <div class="d-flex flex-column justify-content-start" *ngFor="let type of assocByTypes" id="{{ type.name }}">
         <div>
-            <h2 id="{{ type.name }}" class="m-5 text-center">{{ type.name }}</h2>
+            <h2  class="m-5 text-center">{{ type.name }}</h2>
         </div>
         <div class="container-fluid justify-content-around d-flex align-items-center flex-wrap">
             <div *ngFor="let assoc of type.assocs | noMenu ">

@@ -42,7 +42,7 @@ export class DialogComponent implements OnInit {
   constructor(private cartServ: CartService) { }
 
   ngOnInit() {
-    console.log(this.assoc);
+    //console.log(this.assoc);
   }
 
   close() {
