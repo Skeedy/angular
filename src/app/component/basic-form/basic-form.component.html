@@ -1,9 +1,6 @@
 <div *ngIf="visible" class="container-fluid">
     <div fxLayout="row" class="d-flex justify-content-center basic-form">
         <mat-card class="w100">
-            <ngb-alert type="danger" *ngIf="submitFailed" (close)="submitFailed = false">
-                Une erreur est survenue.
-            </ngb-alert>
             <button class="basic-close-btn btn btn-outline-danger" (click)="close()">
                 X
             </button>
@@ -23,11 +20,6 @@
                     </mat-form-field>
                     <mat-form-field>
                         <input matInput
-                               placeholder="Email"
-                               formControlName="email"/>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input matInput
                                placeholder="Téléphone"
                                formControlName="phone"/>
                     </mat-form-field>
@@ -35,11 +27,6 @@
                         <input matInput
                                placeholder="Ville"
                                formControlName="city"/>
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input matInput
-                               placeholder="Mot de passe"
-                               type="password"/>
                     </mat-form-field>
                 </form>
                 <div class="w-100" style="text-align: center;">
@@ -52,6 +39,9 @@
                         <span>Enregistrer</span>
                     </button>
                 </div>
+                <ngb-alert type="danger" *ngIf="submitFailed" (close)="submitFailed = false">
+                  Une erreur est survenue.
+                </ngb-alert>
             </mat-card-content>
         </mat-card>
     </div>

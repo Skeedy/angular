@@ -18,4 +18,8 @@ export class ProfilComponent implements OnInit {
   ngOnInit() {
     this.user = this.auth.currentUser;
   }
+
+  receiveNewUser($event) {
+    this.user = $event;
+  }
 }

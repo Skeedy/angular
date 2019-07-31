@@ -49,12 +49,4 @@ export class DialogComponent implements OnInit {
     this.visible = false;
     this.visibleChange.emit(this.visible);
   }
-
-  private add() {
-    this.cartServ.addAssoc(this.cartRow.assoc);
-  }
-
-  private remove() {
-    this.cartServ.removeAssoc(this.cartRow.assoc);
-  }
 }

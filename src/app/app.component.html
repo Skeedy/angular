@@ -21,18 +21,18 @@
             </span>
             </div>
             <nav>
-                <mat-nav-list  >
+                <mat-nav-list>
+                    <ul>
+                        <li class="mb-3">
+                            <a routerLink="/menu" routerLinkActive="active">Menus</a>
+                        </li>
+                    </ul>
                     <ul *ngFor="let type of types">
                         <li>
                             <a class="pb-3" routerLink="/product/" fragment="{{ type.name }}"
                                routerLinkActive="active" >
                                 {{type.name}}
                             </a>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            <a routerLink="/menu" routerLinkActive="active">Menus</a>
                         </li>
                     </ul>
                 </mat-nav-list>

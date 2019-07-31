@@ -47,8 +47,8 @@ export class AuthService {
       return !!this.loginSubject.value && !!this.userSubject.value;
   }
 
-  public saveProfile(fname, lname, phone, city, password, email) {
-    const data = {fname, lname, phone, city, password, email};
+  public saveProfile(fname, lname, phone, city) {
+    const data = {fname, lname, phone, city};
     return this.http.put<User>(Globals.APP_API + 'auth/profile/edit', data)
       .pipe(map((user) => {
         if (user) {
@@ -77,7 +77,6 @@ export class AuthService {
           }
           return user;
         }));
-
   }
 
   public register(data) {

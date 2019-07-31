@@ -9,7 +9,7 @@
         <h4 class="card-title">
             <strong>{{ menu.name }}</strong>
         </h4>
-        <ul>
+        <ul style="list-style-type: none; padding: none; margin: none;">
             <li *ngFor="let assoc of menu.assocs">
                 {{assoc.quantity}} {{assoc.type.name}} {{assoc.product.name}}
             </li>

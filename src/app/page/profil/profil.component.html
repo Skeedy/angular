@@ -25,7 +25,7 @@
       </div>
     </mat-card>
   </div>
-    <app-basic-form class="col-8 mb-5" [(visible)]="showModal">
+    <app-basic-form class="col-8 mb-5" (newUser)="receiveNewUser($event)" [(visible)]="showModal">
       <button (click)="showModal = !showModal" class="btn btn-outline-danger basic-close-btn">
         x
       </button>

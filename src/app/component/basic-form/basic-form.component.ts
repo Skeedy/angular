@@ -17,41 +17,37 @@ export class BasicFormComponent implements OnInit {
 
   @Input() visible: boolean;
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() userEvent = new EventEmitter<User>();
 
   constructor(private fb: FormBuilder, private auth: AuthService) { }
 
   ngOnInit() {
     this.user = this.auth.currentUser;
     this.userForm = this.fb.group({
-      email : new FormControl(this.user.email),
       fname: new FormControl(this.user.fname),
       lname: new FormControl(this.user.lname),
       phone: new FormControl(this.user.phone),
       city: new FormControl(this.user.city),
-      password: new FormControl(this.user.password)
     });
   }
 
   saveProfile() {
     const val = this.userForm.value;
     this.loading = true;
-    this.auth.saveProfile(val.fname, val.lname, val.phone, val.city, val.email, val.password)
+    this.auth.saveProfile(val.fname, val.lname, val.phone, val.city)
       .subscribe( (user: User) => {
         this.loading = false;
         this.userForm.setValue({
-          email: user.email,
           fname: user.fname,
           lname: user.lname,
           phone : user.phone,
           city : user.city,
-          password : user.password,
         });
+        this.userEvent.emit(this.user);
       }, () => {
         this.submitFailed = true;
         this.loading = false;
       });
-    this.visible = false;
-    this.visibleChange.emit(this.visible);
   }
 
   close() {
