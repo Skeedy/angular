@@ -24,31 +24,23 @@
                 <mat-nav-list>
                     <ul>
                         <li class="mb-3">
-                            <a routerLink="/menu" routerLinkActive="active">Menus</a>
+                            <a routerLink="/menu">Menus</a>
                         </li>
                     </ul>
                     <ul *ngFor="let type of types">
                         <li>
-                            <a class="pb-3" routerLink="/product/" fragment="{{ type.name }}"
-                               routerLinkActive="active" >
+                            <a class="pb-3" routerLink="/product/" fragment="{{ type.name }}">
                                 {{type.name}}
                             </a>
                         </li>
                     </ul>
-                </mat-nav-list>
-                <mat-nav-list>
-                <span *ngIf="isConnected()">
-                    <a routerLink="/profil" routerLinkActive="active" mat-list-item>
-                        <span class="menu-text">Profil</span>
-                    </a>
-                </span>
                 </mat-nav-list>
             </nav>
         </div>
     </mat-sidenav>
     <mat-sidenav-content mode="side">
         <div class="headband"></div>
-        <mat-toolbar>
+        <mat-toolbar class="tool-bar">
             <span>
                 <a routerLink="/home" routerLinkActive="active" mat-list-item>Présentation</a>
             </span>
