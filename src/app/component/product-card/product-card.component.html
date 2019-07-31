@@ -1,11 +1,11 @@
-<mat-card class="mb-5">
+<mat-card>
     <img mat-card-image class="product__img"
          *ngIf="assoc?.image"
          src="{{ assoc?.image?.imgpath |imgpath }}"
          alt="{{ assoc?.image?.alt }}"
          (click)="showDialog = !showDialog">
     <mat-card-content>
-        <mat-card-title class="text-center">
+        <mat-card-title class="product_title text-center">
             {{ assoc.quantity }} <span *ngIf="type.name !== 'Accompagnements' && type.name !=='Desserts' && type.name !== 'Plats chauds'">{{ type.name }} </span>{{assoc.product.name}}
         </mat-card-title>
         <mat-card-subtitle class="text-center mb-2">

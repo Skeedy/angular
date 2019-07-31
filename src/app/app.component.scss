@@ -1,7 +1,17 @@
+@font-face {
+  font-family: shanghai;
+  src: url(../assets/shanghai.ttf);
+}
+
 a {
   color: white;
 }
 
+.tool-bar{
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
 .remaining-space{
   flex: 1 1 auto;
 }
