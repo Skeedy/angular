@@ -6,6 +6,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {catchError, tap} from 'rxjs/operators';
 import {Globals} from '../../globals';
+import {PriceService} from '../../service/price.service';
+import {Price} from '../../class/price';
 
 @Component({
     selector: 'app-type',
@@ -13,14 +15,15 @@ import {Globals} from '../../globals';
     styleUrls: ['./type.component.scss']
 })
 export class TypeComponent implements OnInit {
-    uri = Globals.APP_API + 'type/';
     types: Type[];
+    prices: Price[];
 
-    constructor(private typeService: TypeService, private router: Router, private http: HttpClient) {
+    constructor(private priceService: PriceService, private typeService: TypeService) {
     }
 
     ngOnInit() {
         this.getTypes();
+        this.getPrices();
     }
 
     private log(log: string) {
@@ -41,7 +44,11 @@ export class TypeComponent implements OnInit {
             this.types = data;
         });
     }
-
+    getPrices() {
+        this.priceService.getPrices().subscribe(data => {
+            this.prices = data;
+        });
+    }
     delete(type: Type): void {
         this.typeService.deleteType(type)
             .subscribe(_ => this.getTypes());

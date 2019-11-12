@@ -1,60 +1,86 @@
 <mat-sidenav-container class="example-container">
-    <mat-sidenav #sidenav mode="side" [(opened)]="opened">
-        <mat-toolbar color="warn">
-            <span>Menu</span>
-            <button mat-button (click)="sidenav.toggle()">
-                <mat-icon>clear</mat-icon>
-            </button>
-            <span class="remaining-space"></span>
-
-        </mat-toolbar>
-        <nav>
-            <mat-nav-list>
-                <a routerLink="/product" routerLinkActive="active" mat-list-item (click)="sidenav.close()">
-                    <mat-icon class="mr-3">fastfood</mat-icon>
-                    Produit</a>
-                <a routerLink="/menu" routerLinkActive="active" mat-list-item (click)="sidenav.close()">
-                    <mat-icon class="mr-3">view_list</mat-icon>
-                    Menu</a>
-                <a routerLink="/type" routerLinkActive="active" mat-list-item (click)="sidenav.close()">
-                    <mat-icon class="mr-3">assessment</mat-icon>
-                    Type</a>
+    <mat-sidenav #sidenav [opened]="screenWidth > 900" [mode]="(screenWidth > 900) ?
+    'side':'over'">
+        <figure class="d-flex justify-content-center m-3">
+            <img src="../assets/img/logo.jpg">
+        </figure>
+        <div class="ojbento" >
+            <span class="ojbento__adresse mb-2">3 rue du Général de Gaulle </span>
+            <span class="ojbento__adresse mb-2">33480 Castelnau de Médoc</span>
+            <div class="d-flex justify-content-center align-items-center mb-2">
+                <mat-icon class="phone-icon">phone_android</mat-icon>
+                <span class="ojbento__phone">05.56.69.92.42 </span>
+            </div>
+            <div *ngIf="isConnected()">
+            <span class="d-flex flex-column align-items-center">
+                - Bonjour {{user.fname}} {{user.lname}} -
+                <button mat-button (click)="logout()">
+                    <span >Déconnexion</span>
+                    <mat-icon class="material-icons-outlined">account_box</mat-icon>
+                </button>
+            </span>
+            </div>
+            <nav>
+                <mat-nav-list  >
+                    <ul *ngFor="let type of types">
+                        <li>
+                            <a class="pb-3" routerLink="/product/" fragment="{{ type.name }}"
+                               routerLinkActive="active" >
+                                {{type.name}}
+                            </a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a routerLink="/menu" routerLinkActive="active">Menus</a>
+                        </li>
+                    </ul>
+                </mat-nav-list>
+                <mat-nav-list>
                 <span *ngIf="isConnected()">
-                    <a routerLink="/profile" routerLinkActive="active" mat-list-item (click)="sidenav.close()">
-                    <mat-icon class="mr-3">account_circle</mat-icon>
-                        Profil</a>
+                    <a routerLink="/profil" routerLinkActive="active" mat-list-item>
+                        <span class="menu-text">Profil</span>
+                    </a>
                 </span>
-
-            </mat-nav-list>
-        </nav>
+                </mat-nav-list>
+            </nav>
+        </div>
     </mat-sidenav>
-
-    <mat-sidenav-content>
-        <mat-toolbar color="warn">
-            <span><button mat-button (click)="sidenav.toggle()"><mat-icon>view_headline</mat-icon></button><span>OJBento - Restaurant</span></span>
+    <mat-sidenav-content mode="side">
+        <div class="headband"></div>
+        <mat-toolbar>
+            <span>
+                <a routerLink="/home" routerLinkActive="active" mat-list-item>Présentation</a>
+            </span>
+            <span *ngIf="isConnected()" class="pl-3">
+                <a routerLink="/profil" routerLinkActive="active" mat-list-item>Profil
+                </a>
+            </span>
+            <span *ngIf="screenWidth < 900">
+                <button  type="button" mat-button (click)="sidenav.toggle()">
+                    <mat-icon>view_headline</mat-icon>
+                </button>
+            </span>
             <span class="remaining-space"></span>
             <span *ngIf="!isConnected()">
-            <span>Connexion</span>
-            <button mat-button [matMenuTriggerFor]="menu">
-                <mat-icon class="material-icons-outlined">account_box</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu">
-                <button mat-menu-item routerLink="/login" routerLinkActive="active">
-                    <span>Déconnexion</span>
+                <button mat-button [routerLink]="['/login']">
+                    <mat-icon class="material-icons-outlined">account_box</mat-icon>
+                    <span class="infos__co">Connexion</span>
                 </button>
-            </mat-menu>
             </span>
-            <span *ngIf="isConnected()">
-            <button mat-button (click)="logout()"> {{user?.username}}
-                    <mat-icon class="material-icons-outlined" >account_box</mat-icon>
-            </button>
-            </span>
+                <button class="infos__co" mat-button [matMenuTriggerFor]="menu"
+                        [routerLink]="['/panier']">
+                    <mat-icon>shopping_cart</mat-icon>
+                    Panier {{ cart.getTotalQuantity() }} - {{ cart.getPrice()| currency:'EUR':' ':'1.2-2'}} €
+                </button>
+                <mat-menu #menu="matMenu">
+
+                </mat-menu>
         </mat-toolbar>
-        <div class="container-fluid">
+        <div style="position: relative; width: 100%; height: 100%;">
+            <app-cookie></app-cookie>
             <router-outlet></router-outlet>
-
+            <app-footer></app-footer>
         </div>
-
-
     </mat-sidenav-content>
 </mat-sidenav-container>

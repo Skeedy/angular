@@ -1,3 +1,12 @@
-<p>
- Produits
-</p>
+<div class="row flex-column m-0">
+    <div class="d-flex flex-column justify-content-start" *ngFor="let type of assocByTypes">
+        <div>
+            <h2 id="{{ type.name }}" class="m-5 text-center">{{ type.name }}</h2>
+        </div>
+        <div class="container-fluid justify-content-around d-flex align-items-center flex-wrap">
+            <div *ngFor="let assoc of type.assocs | noMenu ">
+                <app-product-card [type]="type" [assoc]="assoc" ></app-product-card>
+            </div>
+        </div>
+    </div>
+</div>
